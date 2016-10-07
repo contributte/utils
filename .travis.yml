@@ -1,0 +1,49 @@
+language: php
+php:
+    - 5.6
+    - 7.0
+    - 7.1
+    - hhvm
+
+matrix:
+  allow_failures:
+      - php: hhvm-nightly
+
+  include:
+    - php: 5.6
+      env: COMPOSER_FLAG=--prefer-lowest
+    - php: 5.6
+      env: COMPOSER_FLAG=--prefer-stable
+    - php: 7.0
+      env: COMPOSER_FLAG=--prefer-lowest
+    - php: 7.0
+      env: COMPOSER_FLAG=--prefer-stable
+    - php: 7.1
+      env: COMPOSER_FLAG=--prefer-lowest
+    - php: 7.1
+      env: COMPOSER_FLAG=--prefer-stable
+
+sudo: false
+
+before_script:
+    # Update Composer
+    - travis_retry composer self-update
+
+    # Install Nette Tester
+    - travis_retry composer update --no-interaction --prefer-source $COMPOSER_FLAG
+
+    # Coveralls
+    - if [ "$TRAVIS_PHP_VERSION" == "5.6" ]; then cat ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/xdebug.ini >> ./tests/php-unix.ini; fi
+    - if [ "$TRAVIS_PHP_VERSION" == "5.6" ]; then NTESTER_FLAGS="--coverage ./coverage.xml --coverage-src ./src"; else TESTER_FLAGS=""; fi
+
+script:
+    - vendor/bin/tester tests/cases -s -p php -c tests/php-unix.ini $NTESTER_FLAGS
+
+after_script:
+    # Coveralls
+    - if [ "$TRAVIS_PHP_VERSION" == "5.6" ]; then composer require satooshi/php-coveralls; fi
+    - if [ "$TRAVIS_PHP_VERSION" == "5.6" ]; then php vendor/bin/coveralls -c tests/.coveralls.yml -v; fi
+
+after_failure:
+    # Print *.actual content
+    - 'for i in $(find tests -name \*.actual); do echo "--- $i"; cat $i; echo; echo; done'
