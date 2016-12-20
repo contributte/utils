@@ -1,3 +1,0 @@
-#!/usr/bin/env sh
-../vendor/bin/tester -p php -s -j 40 $@
-rm "./tmp" -f -R
