@@ -25,6 +25,8 @@ composer require contributte/utils
 
 ## Usage
 
+There are many classes in this package. Almost all are extending from nette/utils and adding more functionality.
+
 - `Contributte\Utils\DateTime`
 - `Contributte\Utils\DateTimeFactory`
 - `Contributte\Utils\Fields`
@@ -66,10 +68,10 @@ Another useful methods added to `DateTime`:
 
 Collections of functions for normalizing input:
 
-- `inn($inn)`
-- `tin($tin)`
-- `zip($zip)`
-- `phone($phone)`
+- `inn($s)`
+- `tin($s)`
+- `zip($s)`
+- `phone($s)`
 
 ### `FileSystem`
 
@@ -77,7 +79,7 @@ Collection of extra functions:
 
 - `pathalize($path)`
 - `extension($file)`
-- `purge($purge)`
+- `purge($dir)`
 
 
 ### `Strings`

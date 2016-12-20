@@ -48,44 +48,44 @@ class Strings extends NetteStrings
      * Remove spaces from the beginning and end of a string
      * and between chars
      *
-     * @param string $str
+     * @param string $s
      * @return mixed
      */
-    public static function spaceless($str)
+    public static function spaceless($s)
     {
-        $str = trim($str);
-        $str = self::replace($str, '#\s#', '');
+        $s = trim($s);
+        $s = self::replace($s, '#\s#', '');
 
-        return $str;
+        return $s;
     }
 
     /**
      * Remove spaces from the beginning and end of a string
      * and convert double and more spaces between chars to one space
      *
-     * @param string $str
+     * @param string $s
      * @return mixed
      */
-    public static function doublespaceless($str)
+    public static function doublespaceless($s)
     {
-        $str = trim($str);
-        $str = self::replace($str, '#\s{2,}#', ' ');
+        $s = trim($s);
+        $s = self::replace($s, '#\s{2,}#', ' ');
 
-        return $str;
+        return $s;
     }
 
     /**
      * Remove spaces from the beginning and end of a string and remove dashes
      *
-     * @param string $str
+     * @param string $s
      * @return mixed
      */
-    public static function dashless($str)
+    public static function dashless($s)
     {
-        $str = trim($str);
-        $str = self::replace($str, '#\-#', '');
+        $s = trim($s);
+        $s = self::replace($s, '#\-#', '');
 
-        return $str;
+        return $s;
     }
 
 }

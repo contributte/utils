@@ -9,53 +9,53 @@ class Fields
 {
 
 	/**
-	 * @param string $str
+	 * @param string $s
 	 * @return mixed
 	 */
-	public static function inn($str)
+	public static function inn($s)
 	{
-		$str = Strings::spaceless($str);
-		$str = Strings::dashless($str);
-		$str = sprintf('%08s', $str);
+		$s = Strings::spaceless($s);
+		$s = Strings::dashless($s);
+		$s = sprintf('%08s', $s);
 
-		return $str;
+		return $s;
 	}
 
 	/**
-	 * @param string $str
+	 * @param string $s
 	 * @return mixed
 	 */
-	public static function tin($str)
+	public static function tin($s)
 	{
-		$str = Strings::spaceless($str);
-		$str = Strings::dashless($str);
-		$str = strtoupper($str);
+		$s = Strings::spaceless($s);
+		$s = Strings::dashless($s);
+		$s = strtoupper($s);
 
-		return $str;
+		return $s;
 	}
 
 	/**
-	 * @param string $str
+	 * @param string $s
 	 * @return mixed
 	 */
-	public static function zip($str)
+	public static function zip($s)
 	{
-		$str = Strings::spaceless($str);
-		$str = Strings::dashless($str);
+		$s = Strings::spaceless($s);
+		$s = Strings::dashless($s);
 
-		return $str;
+		return $s;
 	}
 
 	/**
-	 * @param string $str
+	 * @param string $s
 	 * @return mixed
 	 */
-	public static function phone($str)
+	public static function phone($s)
 	{
-		$str = Strings::spaceless($str);
-		$str = Strings::dashless($str);
+		$s = Strings::spaceless($s);
+		$s = Strings::dashless($s);
 
-		return $str;
+		return $s;
 	}
 
 }
