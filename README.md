@@ -24,6 +24,12 @@
 composer require contributte/utils
 ```
 
+## Versions
+
+| State       | Version | Branch   | PHP      |
+|-------------|---------|----------|----------|
+| development | `^0.1`  | `master` | `>= 5.6` |
+
 ## Overview
 
 - [DateTimeFactoryExtension](https://github.com/contributte/utils/blob/master/.docs/README.md#datetime--datetimefactory)
