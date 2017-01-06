@@ -33,7 +33,7 @@ composer require contributte/utils
 ## Overview
 
 - [DateTimeFactoryExtension](https://github.com/contributte/utils/blob/master/.docs/README.md#datetime--datetimefactory)
-- Collection of utils
+- Collection of Utils
     - [Fields](https://github.com/contributte/utils/blob/master/.docs/README.md#fields)
     - [FileSystem](https://github.com/contributte/utils/blob/master/.docs/README.md#filesystem)
     - [Strings](https://github.com/contributte/utils/blob/master/.docs/README.md#strings)
