@@ -16,7 +16,7 @@
 
 ## Discussion / Help
 
-[![Join the chat](https://img.shields.io/gitter/room/contributte/contributte.svg?style=flat-square)](https://gitter.im/contributte/contributte?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat](https://img.shields.io/gitter/room/contributte/contributte.svg?style=flat-square)](http://bit.ly/ctteg)
 
 ## Install
 
@@ -27,7 +27,12 @@ composer require contributte/utils
 ## Overview
 
 - [DateTimeFactoryExtension](https://github.com/contributte/utils/blob/master/.docs/README.md#datetime--datetimefactory)
-- [Utils](https://github.com/contributte/utils/blob/master/.docs/README.md)
+- Collection of utils
+    - [Fields](https://github.com/contributte/utils/blob/master/.docs/README.md#fields)
+    - [FileSystem](https://github.com/contributte/utils/blob/master/.docs/README.md#filesystem)
+    - [Strings](https://github.com/contributte/utils/blob/master/.docs/README.md#strings)
+    - [Urls](https://github.com/contributte/utils/blob/master/.docs/README.md#urls)
+    - [Validators](https://github.com/contributte/utils/blob/master/.docs/README.md#validators)
 
 ---
 
