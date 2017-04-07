@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Core\Utils;
+namespace Contributte\Utils;
 
 use Nette\Utils\Validators as NetteValidators;
 
