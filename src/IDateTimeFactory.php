@@ -2,7 +2,7 @@
 
 namespace Contributte\Utils;
 
-use DateTime as NativeDateTime;
+use DateTimeInterface as NativeDateTime;
 use Nette\Utils\DateTime as NetteDateTime;
 
 /**
