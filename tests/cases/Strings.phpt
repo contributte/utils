@@ -37,3 +37,11 @@ test(function () {
 	Assert::equal('CZ11223344', Strings::dashless(' CZ-11223344 '));
 	Assert::equal('CZ11223344', Strings::dashless('     CZ-11223344     '));
 });
+
+// Strings::slashless
+test(function () {
+	Assert::equal('foo/bar', Strings::slashless('foo//bar'));
+	Assert::equal('foo/bar', Strings::slashless(' foo//bar'));
+	Assert::equal('foo/bar', Strings::slashless('foo//bar '));
+	Assert::equal('foo/bar', Strings::slashless(' foo///////bar '));
+});

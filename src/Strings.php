@@ -10,82 +10,97 @@ use Nette\Utils\Strings as NetteStrings;
 class Strings extends NetteStrings
 {
 
-    /**
-     * Replaces $s at the start with $replacement
-     *
-     * @param string $s
-     * @param string $search
-     * @param string $replacement
-     * @return string
-     */
-    public static function replacePrefix($s, $search, $replacement = '')
-    {
-        if (strncmp($s, $search, strlen($search)) === 0) {
-            $s = $replacement . substr($s, strlen($search));
-        }
+	/**
+	 * Replaces $s at the start with $replacement
+	 *
+	 * @param string $s
+	 * @param string $search
+	 * @param string $replacement
+	 * @return string
+	 */
+	public static function replacePrefix($s, $search, $replacement = '')
+	{
+		if (strncmp($s, $search, strlen($search)) === 0) {
+			$s = $replacement . substr($s, strlen($search));
+		}
 
-        return $s;
-    }
+		return $s;
+	}
 
-    /**
-     * Replaces $s at the end with $replacement
-     *
-     * @param string $s
-     * @param string $search
-     * @param string $replacement
-     * @return string
-     */
-    public static function replaceSuffix($s, $search, $replacement = '')
-    {
-        if (substr($s, -strlen($search)) === $search) {
-            $s = substr($s, 0, -strlen($search)) . $replacement;
-        }
+	/**
+	 * Replaces $s at the end with $replacement
+	 *
+	 * @param string $s
+	 * @param string $search
+	 * @param string $replacement
+	 * @return string
+	 */
+	public static function replaceSuffix($s, $search, $replacement = '')
+	{
+		if (substr($s, -strlen($search)) === $search) {
+			$s = substr($s, 0, -strlen($search)) . $replacement;
+		}
 
-        return $s;
-    }
+		return $s;
+	}
 
-    /**
-     * Remove spaces from the beginning and end of a string
-     * and between chars
-     *
-     * @param string $s
-     * @return mixed
-     */
-    public static function spaceless($s)
-    {
-        $s = trim($s);
-        $s = self::replace($s, '#\s#', '');
+	/**
+	 * Remove spaces from the beginning and end of a string
+	 * and between chars
+	 *
+	 * @param string $s
+	 * @return mixed
+	 */
+	public static function spaceless($s)
+	{
+		$s = trim($s);
+		$s = self::replace($s, '#\s#', '');
 
-        return $s;
-    }
+		return $s;
+	}
 
-    /**
-     * Remove spaces from the beginning and end of a string
-     * and convert double and more spaces between chars to one space
-     *
-     * @param string $s
-     * @return mixed
-     */
-    public static function doublespaceless($s)
-    {
-        $s = trim($s);
-        $s = self::replace($s, '#\s{2,}#', ' ');
+	/**
+	 * Remove spaces from the beginning and end of a string
+	 * and convert double and more spaces between chars to one space
+	 *
+	 * @param string $s
+	 * @return mixed
+	 */
+	public static function doublespaceless($s)
+	{
+		$s = trim($s);
+		$s = self::replace($s, '#\s{2,}#', ' ');
 
-        return $s;
-    }
+		return $s;
+	}
 
-    /**
-     * Remove spaces from the beginning and end of a string and remove dashes
-     *
-     * @param string $s
-     * @return mixed
-     */
-    public static function dashless($s)
-    {
-        $s = trim($s);
-        $s = self::replace($s, '#\-#', '');
+	/**
+	 * Remove spaces from the beginning and end of a string and remove dashes
+	 *
+	 * @param string $s
+	 * @return mixed
+	 */
+	public static function dashless($s)
+	{
+		$s = trim($s);
+		$s = self::replace($s, '#\-#', '');
 
-        return $s;
-    }
+		return $s;
+	}
+
+	/**
+	 * Remove spaces from the beginning and end of a string
+	 * and convert double and more slashes between chars to one slash
+	 *
+	 * @param string $s
+	 * @return string
+	 */
+	public static function slashless($s)
+	{
+		$s = trim($s);
+		$s = self::replace($s, '#\/{2,}#', '/');
+
+		return $s;
+	}
 
 }

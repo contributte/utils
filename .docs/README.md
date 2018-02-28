@@ -67,6 +67,7 @@ Collection of extra functions:
 - `spaceless($s)`
 - `doublespaceless($s)`
 - `dashless($s)`
+- `slashless($s)`
 
 ## `Urls`
 
