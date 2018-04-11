@@ -1,9 +1,9 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 <ruleset name="Contributte">
-    <!-- Extending ruleset -->
+    <!-- Extending rulesets -->
     <rule ref="vendor/ninjify/coding-standard/ruleset.xml"/>
 
-    <!-- Project rules -->
+    <!-- My rules -->
     <rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
         <properties>
             <property name="rootNamespaces" type="array" value="
@@ -12,6 +12,14 @@
             "/>
         </properties>
     </rule>
+
+    <rule ref="Generic.WhiteSpace.ScopeIndent">
+        <properties>
+            <property name="indent" value="4"/>
+            <property name="tabIndent" value="true"/>
+        </properties>
+    </rule>
+    <rule ref="Generic.WhiteSpace.DisallowSpaceIndent" />
 
     <rule ref="SlevomatCodingStandard.ControlStructures.AssignmentInCondition">
         <exclude name="SlevomatCodingStandard.ControlStructures.AssignmentInCondition.assignmentInCondition"/>
