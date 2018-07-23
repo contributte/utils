@@ -1,106 +1,71 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\Utils;
 
 use DateTimeInterface;
 use Nette\Utils\DateTime as NetteDateTime;
 
-/**
- * @author Milan Felix Sulc <sulcmil@gmail.com>
- */
 class DateTime extends NetteDateTime
 {
 
 	/**
 	 * @param string|int|DateTimeInterface $time
-	 * @return static
 	 */
-	public static function from($time)
+	public static function from($time): self
 	{
 		return parent::from($time);
 	}
 
 	/**
 	 * @param string $modify
-	 * @return static
+	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
 	 */
-	public function modifyClone($modify = '')
+	public function modifyClone($modify = ''): self
 	{
 		return parent::modifyClone($modify);
 	}
 
 	/**
-	 * TIMES *******************************************************************
-	 */
-
-	/**
 	 * Set time to current time
-	 *
-	 * @return static
 	 */
-	public function setCurrentTime()
+	public function setCurrentTime(): self
 	{
-		return $this->modifyClone()->setTime(date('H'), date('i'), date('s'));
+		return $this->modifyClone()->setTime((int) date('H'), (int) date('i'), (int) date('s'));
 	}
 
 	/**
 	 * Reset current time (00:00:00)
-	 *
-	 * @return static
 	 */
-	public function resetTime()
+	public function resetTime(): self
 	{
 		return $this->modifyClone()->setTime(0, 0, 0);
 	}
 
 	/**
 	 * Reset current time (00:00:00)
-	 *
-	 * @return static
 	 */
-	public function setZeroTime()
+	public function setZeroTime(): self
 	{
 		return $this->resetTime();
 	}
 
 	/**
 	 * Set time to midnight (23:59:59)
-	 *
-	 * @return static
 	 */
-	public function setMidnight()
+	public function setMidnight(): self
 	{
 		return $this->modifyClone()->setTime(23, 59, 59);
 	}
 
 	/**
-	 * DATES *******************************************************************
-	 */
-
-	/**
 	 * Set date to today
-	 *
-	 * @return static
 	 */
-	public function setToday()
+	public function setToday(): self
 	{
-		return $this->modifyClone()->setDate(date('Y'), date('m'), date('d'));
+		return $this->modifyClone()->setDate((int) date('Y'), (int) date('m'), (int) date('d'));
 	}
 
-	/**
-	 * FACTORIES ***************************************************************
-	 */
-
-	/**
-	 * @param int $year
-	 * @param int $month
-	 * @param int $day
-	 * @param int $hour
-	 * @param int $minute
-	 * @param int $second
-	 * @return static
-	 */
-	public static function createBy($year = NULL, $month = NULL, $day = NULL, $hour = NULL, $minute = NULL, $second = NULL)
+	public static function createBy(?int $year = null, ?int $month = null, ?int $day = null, ?int $hour = null, ?int $minute = null, ?int $second = null): self
 	{
 		return self::create([
 			'year' => $year,
@@ -113,10 +78,9 @@ class DateTime extends NetteDateTime
 	}
 
 	/**
-	 * @param array $args
-	 * @return static
+	 * @param string[]|int[]|null[] $args
 	 */
-	public static function create(array $args)
+	public static function create(array $args): self
 	{
 		$date = new static();
 
@@ -127,65 +91,43 @@ class DateTime extends NetteDateTime
 		if (!isset($args['minute'])) $args['minute'] = 0;
 		if (!isset($args['second'])) $args['second'] = 0;
 
-		$date->setDate($args['year'], $args['month'], $args['day']);
-		$date->setTime($args['hour'], $args['minute'], $args['second']);
+		$date->setDate((int) $args['year'], (int) $args['month'], (int) $args['day']);
+		$date->setTime((int) $args['hour'], (int) $args['minute'], (int) $args['second']);
 
 		return $date;
 	}
 
-	/**
-	 * MANIPULATORS ************************************************************
-	 */
-
-	/**
-	 * @return static
-	 */
-	public function getFirstDayOfWeek()
+	public function getFirstDayOfWeek(): self
 	{
 		return $this->modifyClone('first day of this week')
 			->setZeroTime();
 	}
 
-	/**
-	 * @return static
-	 */
-	public function getLastDayOfWeek()
+	public function getLastDayOfWeek(): self
 	{
 		return $this->modifyClone('last day of this week')
 			->setMidnight();
 	}
 
-	/**
-	 * @return static
-	 */
-	public function getFirstDayOfMonth()
+	public function getFirstDayOfMonth(): self
 	{
 		return $this->modifyClone('first day of this month')
 			->setZeroTime();
 	}
 
-	/**
-	 * @return static
-	 */
-	public function getLastDayOfMonth()
+	public function getLastDayOfMonth(): self
 	{
 		return $this->modifyClone('last day of this month')
 			->setMidnight();
 	}
 
-	/**
-	 * @return static
-	 */
-	public function getFirstDayOfYear()
+	public function getFirstDayOfYear(): self
 	{
 		return $this->modifyClone(sprintf('first day of January %s', $this->format('Y')))
 			->setZeroTime();
 	}
 
-	/**
-	 * @return static
-	 */
-	public function getLastDayOfYear()
+	public function getLastDayOfYear(): self
 	{
 		return $this->modifyClone(sprintf('last day of December %s', $this->format('Y')))
 			->setMidnight();

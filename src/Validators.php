@@ -1,31 +1,25 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\Utils;
 
 use Nette\Utils\Validators as NetteValidators;
 
-/**
- * @author Milan Felix Sulc <sulcmil@gmail.com>
- */
 class Validators extends NetteValidators
 {
 
 	/**
 	 * Validate RC
 	 *
-	 * @param string $rc
-	 * @return bool
-	 *
-	 * @see http://latrine.dgx.cz/jak-overit-platne-ic-a-rodne-cislo
+	 * @see https://phpfashion.com/jak-overit-platne-ic-a-rodne-cislo
 	 */
-	public static function isRc($rc)
+	public static function isRc(string $rc): bool
 	{
 		// "be liberal in what you receive"
-		if (!preg_match('#^\s*(\d\d)(\d\d)(\d\d)[ /]*(\d\d\d)(\d?)\s*$#', $rc, $matches)) {
-			return FALSE;
+		if (preg_match('#^\s*(\d\d)(\d\d)(\d\d)[ /]*(\d\d\d)(\d?)\s*$#', $rc, $matches) !== 1) {
+			return false;
 		}
 
-		list(, $year, $month, $day, $ext, $c) = $matches;
+		[, $year, $month, $day, $ext, $c] = $matches;
 
 		// till 1954 numbers of 9 digits cannot be validated
 		if ($c === '') {
@@ -37,7 +31,7 @@ class Validators extends NetteValidators
 		if ($mod === 10)
 			$mod = 0;
 		if ($mod !== (int) $c) {
-			return FALSE;
+			return false;
 		}
 
 		// check date
@@ -52,47 +46,41 @@ class Validators extends NetteValidators
 			$month -= 20;
 
 		if (!checkdate($month, $day, $year)) {
-			return FALSE;
+			return false;
 		}
 
-		return TRUE;
+		return true;
 	}
 
 	/**
 	 * Validate ICO
 	 *
-	 * @param string $inn
-	 * @return bool
-	 *
-	 * @see http://latrine.dgx.cz/jak-overit-platne-ic-a-rodne-cislo
+	 * @see https://phpfashion.com/jak-overit-platne-ic-a-rodne-cislo
 	 */
-	public static function isIco($inn)
+	public static function isIco(string $inn): bool
 	{
 		// "be liberal in what you receive"
-		$inn = preg_replace('#\s+#', '', $inn);
+		$res = preg_replace('#\s+#', '', $inn);
 
 		// has correct form?
-		if (!preg_match('#^\d{8}$#', $inn)) {
-			return FALSE;
+		if (preg_match('#^\d{8}$#', $res) !== 1) {
+			return false;
 		}
 
 		// checksum
 		$a = 0;
 		for ($i = 0; $i < 7; $i++) {
-			$a += $inn[$i] * (8 - $i);
+			$a += (int) $res[$i] * (8 - $i);
 		}
 
 		$a = $a % 11;
 
-		if ($a === 0)
-			$c = 1;
-		elseif ($a === 10)
-			$c = 1;
-		elseif ($a === 1)
-			$c = 0;
+		if ($a === 0) $c = 1;
+		elseif ($a === 10) $c = 1;
+		elseif ($a === 1) $c = 0;
 		else $c = 11 - $a;
 
-		return $c === (int) $inn[7];
+		return $c === (int) $res[7];
 	}
 
 }

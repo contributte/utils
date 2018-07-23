@@ -1,19 +1,10 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\Utils;
 
-use DateTimeInterface as NativeDateTime;
-use Nette\Utils\DateTime as NetteDateTime;
-
-/**
- * @author Milan Felix Sulc <sulcmil@gmail.com>
- */
 interface IDateTimeFactory
 {
 
-	/**
-	 * @return DateTime|NetteDateTime|NativeDateTime
-	 */
-	public function create();
+	public function create(): DateTime;
 
 }

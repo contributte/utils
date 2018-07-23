@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 /**
  * Test: DateTime [comparing]
@@ -10,7 +10,7 @@ use Contributte\Utils\DateTime;
 use Tester\Assert;
 
 // Test: datetime
-test(function () {
+test(function (): void {
 	// Now
 	$now = new DateTime('2014-1-2 00:00:00');
 
@@ -23,20 +23,20 @@ test(function () {
 });
 
 // Test: datetime convert to strtotime
-test(function () {
+test(function (): void {
 	// Now
-	$now = strtotime(new DateTime('2014-1-2 00:00:00'));
+	$now = strtotime((string) new DateTime('2014-1-2 00:00:00'));
 
 	// Limits
-	$from = strtotime(new DateTime('2014-1-1 00:00:00'));
-	$until = strtotime(new DateTime('2014-1-5 00:00:00'));
+	$from = strtotime((string) new DateTime('2014-1-1 00:00:00'));
+	$until = strtotime((string) new DateTime('2014-1-5 00:00:00'));
 
 	Assert::false($from > $now);
 	Assert::false($until < $now);
 });
 
 // Test: now == until
-test(function () {
+test(function (): void {
 	// Now
 	$now = new DateTime('2014-1-5 00:00:00');
 
@@ -49,7 +49,7 @@ test(function () {
 });
 
 // Test: datetimes with DD.MM.YYYY 00:00:00
-test(function () {
+test(function (): void {
 	// Now
 	$now = new DateTime('now');
 	$now->setTime(0, 0, 0);

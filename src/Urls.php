@@ -1,18 +1,11 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\Utils;
 
-/**
- * @author Milan Felix Sulc <sulcmil@gmail.com>
- */
 class Urls
 {
 
-	/**
-	 * @param string $url
-	 * @return bool
-	 */
-	public static function hasFragment($url)
+	public static function hasFragment(string $url): bool
 	{
 		return Strings::startsWith($url, '#');
 	}
