@@ -1,10 +1,9 @@
-<?php
+<?php declare(strict_types = 1);
 
 /**
  * Test: DI\DateTimeFactoryExtension
  */
 
-use Contributte\Utils\DatetimeFactory;
 use Contributte\Utils\DI\DateTimeFactoryExtension;
 use Contributte\Utils\IDateTimeFactory;
 use Nette\DI\Compiler;
@@ -14,14 +13,14 @@ use Tester\Assert;
 
 require_once __DIR__ . '/../../bootstrap.php';
 
-test(function () {
-	$loader = new ContainerLoader(TEMP_DIR, TRUE);
-	$class = $loader->load(function (Compiler $compiler) {
+test(function (): void {
+	$loader = new ContainerLoader(TEMP_DIR, true);
+	$class = $loader->load(function (Compiler $compiler): void {
 		$compiler->addExtension('datetime', new DateTimeFactoryExtension());
 	}, 1);
 
 	/** @var Container $container */
-	$container = new $class;
+	$container = new $class();
 
-	Assert::type(DatetimeFactory::class, $container->getByType(IDateTimeFactory::class));
+	Assert::type(IDateTimeFactory::class, $container->getByType(IDateTimeFactory::class));
 });

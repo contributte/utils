@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\Utils;
 
@@ -6,33 +6,24 @@ use Nette\Utils\FileSystem as NetteFileSystem;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
-/**
- * @author Milan Felix Sulc <sulcmil@gmail.com>
- */
 class FileSystem extends NetteFileSystem
 {
 
 	/**
 	 * Normalize path
-	 *
-	 * @param string $path
-	 * @return string
 	 */
-	public static function pathalize($path)
+	public static function pathalize(string $path): string
 	{
 		return str_replace(['/', '\\'], DIRECTORY_SEPARATOR, $path);
 	}
 
 	/**
 	 * Get file extension(.xxx)
-	 *
-	 * @param string $str
-	 * @return string
 	 */
-	public static function extension($str)
+	public static function extension(string $str): string
 	{
 		$pos = strripos($str, '.');
-		if ($pos === FALSE) {
+		if ($pos === false) {
 			return pathinfo($str, PATHINFO_EXTENSION);
 		}
 
@@ -41,11 +32,8 @@ class FileSystem extends NetteFileSystem
 
 	/**
 	 * Purges directory
-	 *
-	 * @param string $dir
-	 * @return void
 	 */
-	public static function purge($dir)
+	public static function purge(string $dir): void
 	{
 		if (!is_dir($dir)) {
 			mkdir($dir);

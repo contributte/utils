@@ -1,9 +1,17 @@
 {
   "name": "contributte/utils",
   "description": "Extra contrib to nette/utils",
-  "keywords": ["nette", "utils", "strings", "filesystem", "datetime"],
+  "keywords": [
+    "nette",
+    "utils",
+    "strings",
+    "filesystem",
+    "datetime"
+  ],
   "type": "library",
-  "license": "MIT",
+  "license": [
+    "MIT"
+  ],
   "homepage": "https://github.com/contributte/utils",
   "authors": [
     {
@@ -12,24 +20,25 @@
     }
   ],
   "require": {
-    "php": ">= 5.6",
-    "nette/utils": "~2.5.1"
+    "php": ">= 7.1",
+    "nette/utils": "~2.5.2"
   },
   "require-dev": {
-    "ninjify/qa": "^0.4.0",
+    "ninjify/qa": "^0.8.0",
     "ninjify/nunjuck": "^0.2.0",
-    "nette/di": "~2.4.11"
+    "nette/di": "~2.4.13"
   },
   "suggest": {
     "nette/di": "to use DateTimeExtension[CompilerExtension]"
   },
+  "conflict": {
+    "nette/di": "<2.4.13"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "autoload": {
     "psr-4": {
       "Contributte\\Utils\\": "src"
-    }
-  },
-  "autoload-dev": {
-    "psr-4": {
     }
   },
   "scripts": {
@@ -45,17 +54,18 @@
     ],
     "phpstan-install": [
       "mkdir -p temp/phpstan",
-      "composer require -d temp/phpstan phpstan/phpstan:0.8.5",
-      "composer require -d temp/phpstan phpstan/phpstan-nette:0.8.3"
+      "composer require -d temp/phpstan phpstan/phpstan:0.10.2",
+      "composer require -d temp/phpstan phpstan/phpstan-nette:0.10.1",
+      "composer require -d temp/phpstan phpstan/phpstan-strict-rules:0.10.1",
+      "composer require -d temp/phpstan phpstan/phpstan-deprecation-rules:0.10.2"
     ],
     "phpstan": [
-      "temp/phpstan/vendor/bin/phpstan analyse -l 1 -c phpstan.neon src"
+      "temp/phpstan/vendor/bin/phpstan analyse -l max -c phpstan.neon src"
     ]
   },
-  "prefer-stable": true,
   "extra": {
     "branch-alias": {
-      "dev-develop": "0.3.x-dev"
+      "dev-develop": "0.4.x-dev"
     }
   }
 }

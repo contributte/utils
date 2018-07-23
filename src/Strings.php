@@ -1,24 +1,16 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\Utils;
 
 use Nette\Utils\Strings as NetteStrings;
 
-/**
- * @author Milan Felix Sulc <sulcmil@gmail.com>
- */
 class Strings extends NetteStrings
 {
 
 	/**
 	 * Replaces $s at the start with $replacement
-	 *
-	 * @param string $s
-	 * @param string $search
-	 * @param string $replacement
-	 * @return string
 	 */
-	public static function replacePrefix($s, $search, $replacement = '')
+	public static function replacePrefix(string $s, string $search, string $replacement = ''): string
 	{
 		if (strncmp($s, $search, strlen($search)) === 0) {
 			$s = $replacement . substr($s, strlen($search));
@@ -29,13 +21,8 @@ class Strings extends NetteStrings
 
 	/**
 	 * Replaces $s at the end with $replacement
-	 *
-	 * @param string $s
-	 * @param string $search
-	 * @param string $replacement
-	 * @return string
 	 */
-	public static function replaceSuffix($s, $search, $replacement = '')
+	public static function replaceSuffix(string $s, string $search, string $replacement = ''): string
 	{
 		if (substr($s, -strlen($search)) === $search) {
 			$s = substr($s, 0, -strlen($search)) . $replacement;
@@ -48,10 +35,9 @@ class Strings extends NetteStrings
 	 * Remove spaces from the beginning and end of a string
 	 * and between chars
 	 *
-	 * @param string $s
 	 * @return mixed
 	 */
-	public static function spaceless($s)
+	public static function spaceless(string $s)
 	{
 		$s = trim($s);
 		$s = self::replace($s, '#\s#', '');
@@ -63,10 +49,9 @@ class Strings extends NetteStrings
 	 * Remove spaces from the beginning and end of a string
 	 * and convert double and more spaces between chars to one space
 	 *
-	 * @param string $s
 	 * @return mixed
 	 */
-	public static function doublespaceless($s)
+	public static function doublespaceless(string $s)
 	{
 		$s = trim($s);
 		$s = self::replace($s, '#\s{2,}#', ' ');
@@ -77,10 +62,9 @@ class Strings extends NetteStrings
 	/**
 	 * Remove spaces from the beginning and end of a string and remove dashes
 	 *
-	 * @param string $s
 	 * @return mixed
 	 */
-	public static function dashless($s)
+	public static function dashless(string $s)
 	{
 		$s = trim($s);
 		$s = self::replace($s, '#\-#', '');
@@ -91,11 +75,8 @@ class Strings extends NetteStrings
 	/**
 	 * Remove spaces from the beginning and end of a string
 	 * and convert double and more slashes between chars to one slash
-	 *
-	 * @param string $s
-	 * @return string
 	 */
-	public static function slashless($s)
+	public static function slashless(string $s): string
 	{
 		$s = trim($s);
 		$s = self::replace($s, '#\/{2,}#', '/');

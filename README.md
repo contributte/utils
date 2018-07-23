@@ -26,17 +26,19 @@ composer require contributte/utils
 
 | State       | Version | Branch   | PHP      |
 |-------------|---------|----------|----------|
+| dev         | `^0.4`  | `master` | `>= 7.1` |
+| stable      | `^0.3`  | `master` | `>= 7.1` |
 | stable      | `^0.2`  | `master` | `>= 5.6` |
 
 ## Overview
 
-- [DateTimeFactoryExtension](https://github.com/contributte/utils/blob/master/.docs/README.md#datetime--datetimefactory)
+- [DateTimeFactoryExtension](/.docs/README.md#datetime--datetimefactory)
 - Collection of useful classes:
-    - [Fields](https://github.com/contributte/utils/blob/master/.docs/README.md#fields)
-    - [FileSystem](https://github.com/contributte/utils/blob/master/.docs/README.md#filesystem)
-    - [Strings](https://github.com/contributte/utils/blob/master/.docs/README.md#strings)
-    - [Urls](https://github.com/contributte/utils/blob/master/.docs/README.md#urls)
-    - [Validators](https://github.com/contributte/utils/blob/master/.docs/README.md#validators)
+    - [Fields](/.docs/README.md#fields)
+    - [FileSystem](/.docs/README.md#filesystem)
+    - [Strings](/.docs/README.md#strings)
+    - [Urls](/.docs/README.md#urls)
+    - [Validators](/.docs/README.md#validators)
 
 ## Maintainers
 
@@ -49,6 +51,13 @@ composer require contributte/utils
         </a>
         </br>
         <a href="https://github.com/f3l1x">Milan Felix Šulc</a>
+      </td>
+      <td align="center">
+        <a href="https://github.com/mabar">
+            <img width="150" height="150" src="https://avatars0.githubusercontent.com/u/20974277?s=400&v=4">
+        </a>
+        </br>
+        <a href="https://github.com/mabar">Marek Bartoš</a>
       </td>
     </tr>
   <tbody>

@@ -1,21 +1,18 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\Utils\Export;
 
-/**
- * @author Milan Felix Sulc <sulcmil@gmail.com>
- */
 class Csv
 {
 
 	/**
-	 * @param array $data
-	 * @return string
+	 * @param mixed[] $data
 	 */
-	public static function toCsv(array $data)
+	public static function toCsv(array $data): string
 	{
-		if (!$data) return NULL;
+		if ($data === []) return '';
 
+		/** @var resource $resource */
 		$resource = fopen('php://temp/maxmemory:' . (5 * 1024 * 1024), 'r+'); // 5MB of memory allocated
 		foreach ($data as $row) {
 			fputcsv($resource, $row);
@@ -25,7 +22,7 @@ class Csv
 		$output = stream_get_contents($resource);
 		fclose($resource);
 
-		return $output;
+		return (string) $output;
 	}
 
 }

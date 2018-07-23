@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types = 1);
 
 /**
  * Test: DateTime
@@ -10,7 +10,7 @@ use Contributte\Utils\DateTime;
 use Tester\Assert;
 
 // DateTime::setCurrentTime()
-test(function () {
+test(function (): void {
 	$dt = DateTime::from('2020-10-10');
 	Assert::equal('10.10.2020 00:00:00', $dt->format('d.m.Y H:i:s'));
 
@@ -19,7 +19,7 @@ test(function () {
 });
 
 // DateTime::create
-test(function () {
+test(function (): void {
 	$dt = DateTime::create(['year' => 2020]);
 	Assert::equal(DateTime::from(sprintf('%s.%s.%s', date('d'), date('m'), 2020)), $dt);
 
@@ -31,7 +31,7 @@ test(function () {
 });
 
 // DateTime::createBy
-test(function () {
+test(function (): void {
 	$dt = DateTime::createBy(2020, 6, 1);
 	Assert::equal(DateTime::from('2020-06-01'), $dt);
 });
@@ -41,7 +41,7 @@ test(function () {
 // DateTime::getFirstDayOfYear
 // DateTime::getLastDayOfYear
 // DateTime::getFirstDayOfMonth
-test(function () {
+test(function (): void {
 	$dt = new DateTime('15.6.2020');
 	Assert::equal(DateTime::from('1.6.2020 00:00:00'), $dt->getFirstDayOfMonth());
 	Assert::equal(DateTime::from('30.6.2020 23:59:59'), $dt->getLastDayOfMonth());

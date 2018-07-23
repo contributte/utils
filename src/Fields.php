@@ -1,18 +1,14 @@
-<?php
+<?php declare(strict_types = 1);
 
 namespace Contributte\Utils;
 
-/**
- * @author Milan Felix Sulc <sulcmil@gmail.com>
- */
 class Fields
 {
 
 	/**
-	 * @param string $s
 	 * @return mixed
 	 */
-	public static function inn($s)
+	public static function inn(string $s)
 	{
 		$s = Strings::spaceless($s);
 		$s = Strings::dashless($s);
@@ -22,10 +18,9 @@ class Fields
 	}
 
 	/**
-	 * @param string $s
 	 * @return mixed
 	 */
-	public static function tin($s)
+	public static function tin(string $s)
 	{
 		$s = Strings::spaceless($s);
 		$s = Strings::dashless($s);
@@ -35,10 +30,9 @@ class Fields
 	}
 
 	/**
-	 * @param string $s
 	 * @return mixed
 	 */
-	public static function zip($s)
+	public static function zip(string $s)
 	{
 		$s = Strings::spaceless($s);
 		$s = Strings::dashless($s);
@@ -47,10 +41,9 @@ class Fields
 	}
 
 	/**
-	 * @param string $s
 	 * @return mixed
 	 */
-	public static function phone($s)
+	public static function phone(string $s)
 	{
 		$s = Strings::spaceless($s);
 		$s = Strings::dashless($s);
