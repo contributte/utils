@@ -20,7 +20,7 @@ extensions:
     datetime: Contributte\Utils\DI\DateTimeFactoryExtension
 ```
 
-You can use default or override it by our own implementation:
+You can use the default or override it by our own implementation:
 
 ```php
 services:
