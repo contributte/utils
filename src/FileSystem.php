@@ -5,6 +5,7 @@ namespace Contributte\Utils;
 use Nette\Utils\FileSystem as NetteFileSystem;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
+use SplFileInfo;
 
 class FileSystem extends NetteFileSystem
 {
@@ -39,11 +40,12 @@ class FileSystem extends NetteFileSystem
 			mkdir($dir);
 		}
 
+		/** @var SplFileInfo $entry */
 		foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS), RecursiveIteratorIterator::CHILD_FIRST) as $entry) {
 			if ($entry->isDir()) {
-				rmdir($entry);
+				rmdir($entry->getRealPath());
 			} else {
-				unlink($entry);
+				unlink($entry->getRealPath());
 			}
 		}
 	}
