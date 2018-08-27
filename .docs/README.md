@@ -79,5 +79,5 @@ Collection of extra functions:
 
 Collection of extra functions: 
 
-- `isIco($s)`
-- `isRc($s)`
+- `isIco($s)` - trader identification number (Czech only)
+- `isRc($s)`- personal identification number (Czech and Slovak only)
