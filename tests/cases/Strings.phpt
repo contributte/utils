@@ -45,3 +45,7 @@ test(function (): void {
 	Assert::equal('foo/bar', Strings::slashless('foo//bar '));
 	Assert::equal('foo/bar', Strings::slashless(' foo///////bar '));
 });
+
+test(function (): void {
+	Assert::equal('prefix_bar', Strings::replacePrefix('foobar', 'foo', 'prefix_'));
+});
