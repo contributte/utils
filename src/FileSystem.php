@@ -43,9 +43,9 @@ class FileSystem extends NetteFileSystem
 		/** @var SplFileInfo $entry */
 		foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($dir, RecursiveDirectoryIterator::SKIP_DOTS), RecursiveIteratorIterator::CHILD_FIRST) as $entry) {
 			if ($entry->isDir()) {
-				rmdir($entry->getRealPath());
+				rmdir((string) $entry->getRealPath());
 			} else {
-				unlink($entry->getRealPath());
+				unlink((string) $entry->getRealPath());
 			}
 		}
 	}

@@ -63,7 +63,7 @@ class Validators extends NetteValidators
 		$res = preg_replace('#\s+#', '', $inn);
 
 		// has correct form?
-		if (preg_match('#^\d{8}$#', $res) !== 1) {
+		if (preg_match('#^\d{8}$#', (string) $res) !== 1) {
 			return false;
 		}
 

@@ -1,10 +1,5 @@
 includes:
-	- temp/phpstan/vendor/phpstan/phpstan-strict-rules/rules.neon
+	- temp/phpstan/vendor/phpstan/phpstan-deprecation-rules/rules.neon
 	- temp/phpstan/vendor/phpstan/phpstan-nette/extension.neon
 	- temp/phpstan/vendor/phpstan/phpstan-nette/rules.neon
-	- temp/phpstan/vendor/phpstan/phpstan-deprecation-rules/rules.neon
-
-parameters:
-	ignoreErrors:
-		- '#Parameter \#1 \$filename of function unlink expects string, string\|false given.#'
-		- '#Parameter \#1 \$dirname of function rmdir expects string, string\|false given.#'
+	- temp/phpstan/vendor/phpstan/phpstan-strict-rules/rules.neon
