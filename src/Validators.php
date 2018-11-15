@@ -19,7 +19,7 @@ class Validators extends NetteValidators
 			return false;
 		}
 
-		[, $year, $month, $day, $ext, $c] = $matches;
+		[, (int) $year, (int) $month, (int) $day, $ext, $c] = $matches;
 
 		// till 1954 numbers of 9 digits cannot be validated
 		if ($c === '') {
