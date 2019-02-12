@@ -81,3 +81,10 @@ Collection of extra functions:
 
 - `isIco($s)` - trader identification number (Czech only)
 - `isRc($s)`- personal identification number (Czech and Slovak only)
+
+
+## `Http`
+
+Collection of extra functions: 
+
+- `metadata($s)` - gets http metadata from string, returns as `[name => content]`
