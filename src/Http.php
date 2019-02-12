@@ -2,6 +2,7 @@
 
 namespace Contributte\Utils;
 
+use LogicException;
 use Nette\StaticClass;
 
 class Http
@@ -35,8 +36,13 @@ class Http
 	 */
 	public static function metadata(string $content): array
 	{
-		if (preg_match_all(self::$metadataPattern, $content, $matches)) {
-			return array_combine($matches[1], $matches[2]);
+		if (preg_match_all(self::$metadataPattern, $content, $matches) !== false) {
+			$combine = array_combine($matches[1], $matches[2]);
+			if ($combine === false) {
+				throw new LogicException('Matches count is not equal.');
+			}
+
+			return $combine;
 		}
 
 		return [];
