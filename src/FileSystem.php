@@ -65,7 +65,6 @@ class FileSystem
 		NetteFileSystem::createDir($dir, $mode);
 	}
 
-
 	/**
 	 * Copies a file or directory.
 	 *
@@ -76,7 +75,6 @@ class FileSystem
 		NetteFileSystem::copy($source, $dest, $overwrite);
 	}
 
-
 	/**
 	 * Deletes a file or directory.
 	 *
@@ -86,7 +84,6 @@ class FileSystem
 	{
 		NetteFileSystem::delete($path);
 	}
-
 
 	/**
 	 * Renames a file or directory.
