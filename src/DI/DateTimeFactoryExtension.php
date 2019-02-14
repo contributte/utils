@@ -15,8 +15,13 @@ class DateTimeFactoryExtension extends CompilerExtension
 	{
 		$builder = $this->getContainerBuilder();
 
-		$builder->addDefinition($this->prefix('factory'))
-			->setImplement(IDateTimeFactory::class);
+		if (method_exists($builder, 'addFactoryDefinition')) {
+			$builder->addFactoryDefinition($this->prefix('factory'))
+				->setImplement(IDateTimeFactory::class);
+		} else {
+			$builder->addDefinition($this->prefix('factory'))
+				->setImplement(IDateTimeFactory::class);
+		}
 	}
 
 }
