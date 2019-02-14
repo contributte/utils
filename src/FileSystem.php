@@ -2,13 +2,18 @@
 
 namespace Contributte\Utils;
 
+use Nette\InvalidArgumentException;
+use Nette\IOException;
+use Nette\StaticClass;
 use Nette\Utils\FileSystem as NetteFileSystem;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 use SplFileInfo;
 
-class FileSystem extends NetteFileSystem
+class FileSystem
 {
+
+	use StaticClass;
 
 	/**
 	 * Normalize path
@@ -48,6 +53,79 @@ class FileSystem extends NetteFileSystem
 				unlink((string) $entry->getRealPath());
 			}
 		}
+	}
+
+	/**
+	 * Creates a directory.
+	 *
+	 * @throws IOException
+	 */
+	public static function createDir(string $dir, int $mode = 0777): void
+	{
+		NetteFileSystem::createDir($dir, $mode);
+	}
+
+
+	/**
+	 * Copies a file or directory.
+	 *
+	 * @throws IOException
+	 */
+	public static function copy(string $source, string $dest, bool $overwrite = true): void
+	{
+		NetteFileSystem::copy($source, $dest, $overwrite);
+	}
+
+
+	/**
+	 * Deletes a file or directory.
+	 *
+	 * @throws IOException
+	 */
+	public static function delete(string $path): void
+	{
+		NetteFileSystem::delete($path);
+	}
+
+
+	/**
+	 * Renames a file or directory.
+	 *
+	 * @throws IOException
+	 * @throws InvalidArgumentException if the target file or directory already exist
+	 */
+	public static function rename(string $name, string $newName, bool $overwrite = true): void
+	{
+		NetteFileSystem::rename($name, $newName, $overwrite);
+	}
+
+	/**
+	 * Reads file content.
+	 *
+	 * @throws IOException
+	 */
+	public static function read(string $file): string
+	{
+		return NetteFileSystem::read($file);
+	}
+
+	/**
+	 * Writes a string to a file.
+	 *
+	 * @param string|mixed[]|resource $content
+	 * @throws IOException
+	 */
+	public static function write(string $file, $content, int $mode = 0666): void
+	{
+		NetteFileSystem::write($file, $content, $mode);
+	}
+
+	/**
+	 * Is path absolute?
+	 */
+	public static function isAbsolute(string $path): bool
+	{
+		return NetteFileSystem::isAbsolute($path);
 	}
 
 }
