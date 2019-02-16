@@ -5,6 +5,6 @@ namespace Contributte\Utils;
 interface IDateTimeFactory
 {
 
-	public function create(): DateTime;
+	public function create(string $time = 'now'): DateTime;
 
 }

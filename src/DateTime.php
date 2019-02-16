@@ -3,10 +3,16 @@
 namespace Contributte\Utils;
 
 use DateTimeInterface;
+use DateTimeZone;
 use Nette\Utils\DateTime as NetteDateTime;
 
 class DateTime extends NetteDateTime
 {
+
+	public function __construct(string $time = 'now', ?DateTimeZone $timezone = null)
+	{
+		parent::__construct($time, $timezone);
+	}
 
 	/**
 	 * @param string|int|DateTimeInterface $time
