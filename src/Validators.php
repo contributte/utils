@@ -54,11 +54,7 @@ class Validators extends NetteValidators
 			$month -= 20;
 		}
 
-		if (!checkdate($month, $day, $year)) {
-			return false;
-		}
-
-		return true;
+		return checkdate($month, $day, $year);
 	}
 
 	/**
