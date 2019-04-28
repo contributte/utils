@@ -38,6 +38,7 @@ class Http
 	{
 		if (preg_match_all(self::$metadataPattern, $content, $matches) !== false) {
 			$combine = array_combine($matches[1], $matches[2]);
+
 			if ($combine === false) {
 				throw new LogicException('Matches count is not equal.');
 			}

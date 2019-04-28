@@ -10,10 +10,13 @@ class Csv
 	 */
 	public static function toCsv(array $data): string
 	{
-		if ($data === []) return '';
+		if ($data === []) {
+			return '';
+		}
 
 		/** @var resource $resource */
 		$resource = fopen('php://temp/maxmemory:' . (5 * 1024 * 1024), 'r+'); // 5MB of memory allocated
+
 		foreach ($data as $row) {
 			fputcsv($resource, $row);
 		}

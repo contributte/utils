@@ -29,6 +29,7 @@ class FileSystem
 	public static function extension(string $str): string
 	{
 		$pos = strripos($str, '.');
+
 		if ($pos === false) {
 			return pathinfo($str, PATHINFO_EXTENSION);
 		}

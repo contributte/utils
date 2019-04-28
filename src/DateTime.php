@@ -90,12 +90,29 @@ class DateTime extends NetteDateTime
 	{
 		$date = new static();
 
-		if (!isset($args['year'])) $args['year'] = date('Y');
-		if (!isset($args['month'])) $args['month'] = date('m');
-		if (!isset($args['day'])) $args['day'] = date('d');
-		if (!isset($args['hour'])) $args['hour'] = 0;
-		if (!isset($args['minute'])) $args['minute'] = 0;
-		if (!isset($args['second'])) $args['second'] = 0;
+		if (!isset($args['year'])) {
+			$args['year'] = date('Y');
+		}
+
+		if (!isset($args['month'])) {
+			$args['month'] = date('m');
+		}
+
+		if (!isset($args['day'])) {
+			$args['day'] = date('d');
+		}
+
+		if (!isset($args['hour'])) {
+			$args['hour'] = 0;
+		}
+
+		if (!isset($args['minute'])) {
+			$args['minute'] = 0;
+		}
+
+		if (!isset($args['second'])) {
+			$args['second'] = 0;
+		}
 
 		$date->setDate((int) $args['year'], (int) $args['month'], (int) $args['day']);
 		$date->setTime((int) $args['hour'], (int) $args['minute'], (int) $args['second']);
