@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ruleset name="Contributte">
-	<!-- Contributte Coding Standard -->
+<ruleset>
 	<rule ref="./vendor/ninjify/coding-standard/contributte.xml"/>
 
-	<!-- Specific rules -->
+	<!-- Package specific rules -->
     <rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
         <properties>
             <property name="rootNamespaces" type="array" value="
                 src=>Contributte\Utils,
-                tests/fixtures=>Tests\Fixtures
+                tests=>Tests\Contributte\Utils,
             "/>
+			<property name="extensions" type="array" value="php, phpt"/>
         </properties>
     </rule>
 
