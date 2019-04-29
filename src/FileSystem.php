@@ -110,10 +110,9 @@ class FileSystem
 	/**
 	 * Writes a string to a file.
 	 *
-	 * @param string|mixed[]|resource $content
 	 * @throws IOException
 	 */
-	public static function write(string $file, $content, int $mode = 0666): void
+	public static function write(string $file, string $content, int $mode = 0666): void
 	{
 		NetteFileSystem::write($file, $content, $mode);
 	}

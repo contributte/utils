@@ -19,10 +19,10 @@
   ],
   "require": {
     "php": "^7.2",
-    "nette/utils": "~2.5.2"
+    "nette/utils": "~3.0.0"
   },
   "require-dev": {
-    "nette/di": "~2.4.13",
+    "nette/di": "~3.0.0",
     "ninjify/nunjuck": "^0.2.0",
     "ninjify/qa": "^0.9.0",
     "phpstan/phpstan-deprecation-rules": "^0.11",
@@ -32,9 +32,6 @@
   },
   "suggest": {
     "nette/di": "to use DateTimeExtension[CompilerExtension]"
-  },
-  "conflict": {
-    "nette/di": "<2.4.13"
   },
   "autoload": {
     "psr-4": {
