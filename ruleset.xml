@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ruleset>
-	<rule ref="./vendor/ninjify/coding-standard/contributte.xml"/>
+	<rule ref="./vendor/ninjify/coding-standard/contributte.xml">
+		<exclude name="Squiz.Commenting.FunctionComment.InvalidTypeHint"/>
+		<!-- Useless for yield in tests -->
+		<exclude name="SlevomatCodingStandard.ControlStructures.ControlStructureSpacing.IncorrectLinesCountBeforeControlStructure"/>
+		<exclude name="SlevomatCodingStandard.ControlStructures.ControlStructureSpacing.IncorrectLinesCountAfterControlStructure"/>
+	</rule>
 
 	<!-- Package specific rules -->
     <rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
