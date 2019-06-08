@@ -1,9 +1,12 @@
-# Utils
+# Contributte Utils
+
+Extra contribution to [`nette/utils`](https://github.com/nette/utils).
 
 ## Content
 
 There are many classes in this package. Almost all are extending from `nette/utils` and adding more functionality.
 
+- [Setup](#setup)
 - [DateTime & DateTimeFactory](#datetime--datetimefactory)
 - [Fields](#fields)
 - [FileSystem](#filesystem)
@@ -11,9 +14,15 @@ There are many classes in this package. Almost all are extending from `nette/uti
 - [Urls](#urls)
 - [Validators](#validators)
 
+## Setup
+
+```bash
+composer require contributte/utils
+```
+
 ## `DateTime` && `DateTimeFactory`
 
-This extesions register simple `DateTime` provider -> `DateTimeFactory`. 
+This extension register simple `DateTime` provider -> `DateTimeFactory`. 
 
 ```yml
 extensions:
@@ -22,7 +31,7 @@ extensions:
 
 You can use the default or override it by our own implementation:
 
-```php
+```yaml
 services:
     datetime.factory: App\Model\MyDateTimeFactory
 ```
