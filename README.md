@@ -1,8 +1,6 @@
-# Contributte > Utils
+# Contributte Utils
 
-:sparkles: Extra contribution to [`nette/utils`](https://github.com/nette/utils).
-
------
+Extra contribution to [`nette/utils`](https://github.com/nette/utils).
 
 [![Build Status](https://img.shields.io/travis/contributte/utils.svg?style=flat-square)](https://travis-ci.org/contributte/utils)
 [![Code coverage](https://img.shields.io/coveralls/contributte/utils.svg?style=flat-square)](https://coveralls.io/r/contributte/utils)
@@ -10,17 +8,21 @@
 [![Downloads this Month](https://img.shields.io/packagist/dm/contributte/utils.svg?style=flat-square)](https://packagist.org/packages/contributte/utils)
 [![Downloads total](https://img.shields.io/packagist/dt/contributte/utils.svg?style=flat-square)](https://packagist.org/packages/contributte/utils)
 [![Latest stable](https://img.shields.io/packagist/v/contributte/utils.svg?style=flat-square)](https://packagist.org/packages/contributte/utils)
-[![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat)](https://github.com/phpstan/phpstan)
+[![PHPStan](https://img.shields.io/badge/PHPStan-enabled-brightgreen.svg?style=flat-square)](https://github.com/phpstan/phpstan)
 
 ## Discussion / Help
 
 [![Join the chat](https://img.shields.io/gitter/room/contributte/contributte.svg?style=flat-square)](http://bit.ly/ctteg)
 
-## Install
+## Documentation
 
-```
-composer require contributte/utils
-```
+- [Setup](.docs/README.md#setup)
+- [DateTime & DateTimeFactory](.docs/README.md#datetime--datetimefactory)
+- [Fields](.docs/README.md#fields)
+- [FileSystem](.docs/README.md#filesystem)
+- [Strings](.docs/README.md#strings)
+- [Urls](.docs/README.md#urls)
+- [Validators](.docs/README.md#validators)
 
 ## Versions
 
@@ -29,16 +31,6 @@ composer require contributte/utils
 | dev         | `^0.4`  | `master` | `>= 7.1` |
 | stable      | `^0.3`  | `master` | `>= 7.1` |
 | stable      | `^0.2`  | `master` | `>= 5.6` |
-
-## Overview
-
-- [DateTimeFactoryExtension](/.docs/README.md#datetime--datetimefactory)
-- Collection of useful classes:
-    - [Fields](/.docs/README.md#fields)
-    - [FileSystem](/.docs/README.md#filesystem)
-    - [Strings](/.docs/README.md#strings)
-    - [Urls](/.docs/README.md#urls)
-    - [Validators](/.docs/README.md#validators)
 
 ## Maintainers
 
@@ -62,7 +54,5 @@ composer require contributte/utils
     </tr>
   </tbody>
 </table>
-
----
 
 Thank you for testing, reporting and contributing.
