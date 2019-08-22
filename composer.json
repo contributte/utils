@@ -19,7 +19,7 @@
   ],
   "require": {
     "php": "^7.2",
-    "nette/utils": "~2.5.2"
+    "nette/utils": "~2.4.10 | ~2.5.2"
   },
   "require-dev": {
     "nette/di": "~2.4.13",
