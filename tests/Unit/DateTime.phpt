@@ -20,6 +20,9 @@ test(function (): void {
 
 // DateTime::create
 test(function (): void {
+	$dt = DateTime::create([]);
+	Assert::equal(DateTime::from(sprintf('%s.%s.%s', date('d'), date('m'), date('Y'))), $dt);
+
 	$dt = DateTime::create(['year' => 2020]);
 	Assert::equal(DateTime::from(sprintf('%s.%s.%s', date('d'), date('m'), 2020)), $dt);
 
