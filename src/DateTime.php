@@ -16,6 +16,7 @@ class DateTime extends NetteDateTime
 
 	/**
 	 * @param string|int|DateTimeInterface $time
+	 * @return static
 	 */
 	public static function from($time): self
 	{
@@ -24,6 +25,7 @@ class DateTime extends NetteDateTime
 
 	/**
 	 * @param string $modify
+	 * @return static
 	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
 	 */
 	public function modifyClone($modify = ''): self
@@ -33,6 +35,8 @@ class DateTime extends NetteDateTime
 
 	/**
 	 * Set time to current time
+	 *
+	 * @return static
 	 */
 	public function setCurrentTime(): self
 	{
@@ -41,6 +45,8 @@ class DateTime extends NetteDateTime
 
 	/**
 	 * Reset current time (00:00:00)
+	 *
+	 * @return static
 	 */
 	public function resetTime(): self
 	{
@@ -49,6 +55,8 @@ class DateTime extends NetteDateTime
 
 	/**
 	 * Reset current time (00:00:00)
+	 *
+	 * @return static
 	 */
 	public function setZeroTime(): self
 	{
@@ -57,6 +65,8 @@ class DateTime extends NetteDateTime
 
 	/**
 	 * Set time to midnight (23:59:59)
+	 *
+	 * @return static
 	 */
 	public function setMidnight(): self
 	{
@@ -65,12 +75,17 @@ class DateTime extends NetteDateTime
 
 	/**
 	 * Set date to today
+	 *
+	 * @return static
 	 */
 	public function setToday(): self
 	{
 		return $this->modifyClone()->setDate((int) date('Y'), (int) date('m'), (int) date('d'));
 	}
 
+	/**
+	 * @return static
+	 */
 	public static function createBy(?int $year = null, ?int $month = null, ?int $day = null, ?int $hour = null, ?int $minute = null, ?int $second = null): self
 	{
 		return self::create([
@@ -85,6 +100,7 @@ class DateTime extends NetteDateTime
 
 	/**
 	 * @param string[]|int[]|null[] $args
+	 * @return static
 	 */
 	public static function create(array $args): self
 	{
@@ -120,36 +136,54 @@ class DateTime extends NetteDateTime
 		return $date;
 	}
 
+	/**
+	 * @return static
+	 */
 	public function getFirstDayOfWeek(): self
 	{
 		return $this->modifyClone('first day of this week')
 			->setZeroTime();
 	}
 
+	/**
+	 * @return static
+	 */
 	public function getLastDayOfWeek(): self
 	{
 		return $this->modifyClone('last day of this week')
 			->setMidnight();
 	}
 
+	/**
+	 * @return static
+	 */
 	public function getFirstDayOfMonth(): self
 	{
 		return $this->modifyClone('first day of this month')
 			->setZeroTime();
 	}
 
+	/**
+	 * @return static
+	 */
 	public function getLastDayOfMonth(): self
 	{
 		return $this->modifyClone('last day of this month')
 			->setMidnight();
 	}
 
+	/**
+	 * @return static
+	 */
 	public function getFirstDayOfYear(): self
 	{
 		return $this->modifyClone(sprintf('first day of January %s', $this->format('Y')))
 			->setZeroTime();
 	}
 
+	/**
+	 * @return static
+	 */
 	public function getLastDayOfYear(): self
 	{
 		return $this->modifyClone(sprintf('last day of December %s', $this->format('Y')))
