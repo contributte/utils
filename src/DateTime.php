@@ -24,11 +24,9 @@ class DateTime extends NetteDateTime
 	}
 
 	/**
-	 * @param string $modify
 	 * @return static
-	 * @phpcsSuppress SlevomatCodingStandard.TypeHints.TypeHintDeclaration.MissingParameterTypeHint
 	 */
-	public function modifyClone($modify = ''): self
+	public function modifyClone(string $modify = ''): self
 	{
 		return parent::modifyClone($modify);
 	}
