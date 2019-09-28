@@ -51,3 +51,10 @@ test(function (): void {
 	Assert::equal(DateTime::from('1.1.2020 00:00:00'), $dt->getFirstDayOfYear());
 	Assert::equal(DateTime::from('31.12.2020 23:59:59'), $dt->getLastDayOfYear());
 });
+
+// DateTime::setToday
+test(function (): void {
+	$dt = DateTime::createBy(2020, 6, 1);
+	$dt = $dt->setToday();
+	Assert::equal(date('d.m.Y'), $dt->format('d.m.Y'));
+});
