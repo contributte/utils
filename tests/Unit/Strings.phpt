@@ -46,6 +46,16 @@ test(function (): void {
 	Assert::equal('foo/bar', Strings::slashless(' foo///////bar '));
 });
 
+// Strings::replacePrefix
+// Strings::replaceSuffix
 test(function (): void {
+	Assert::equal('foobar', Strings::replacePrefix('foobar', 'ob', 'prefix_'));
+	Assert::equal('prefix_', Strings::replacePrefix('foobar', 'foobar', 'prefix_'));
 	Assert::equal('prefix_bar', Strings::replacePrefix('foobar', 'foo', 'prefix_'));
+	Assert::equal('prefix_foofoo', Strings::replacePrefix('foofoofoo', 'foo', 'prefix_'));
+
+	Assert::equal('foobar', Strings::replaceSuffix('foobar', 'ob', '_suffix'));
+	Assert::equal('_suffix', Strings::replaceSuffix('foobar', 'foobar', '_suffix'));
+	Assert::equal('foo_suffix', Strings::replaceSuffix('foobar', 'bar', '_suffix'));
+	Assert::equal('foofoo_suffix', Strings::replaceSuffix('foofoofoo', 'foo', '_suffix'));
 });
