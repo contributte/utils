@@ -20,6 +20,9 @@ class Validators extends NetteValidators
 		}
 
 		[, $year, $month, $day, $ext, $c] = $matches;
+
+		$numberForModulo = (int) ($year . $month . $day . $ext);
+
 		$year = (int) $year;
 		$month = (int) $month;
 		$day = (int) $day;
@@ -30,7 +33,7 @@ class Validators extends NetteValidators
 		}
 
 		// check number
-		$mod = ($year . $month . $day . $ext) % 11;
+		$mod = $numberForModulo % 11;
 
 		if ($mod === 10) {
 			$mod = 0;
