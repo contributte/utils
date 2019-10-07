@@ -52,6 +52,18 @@ test(function (): void {
 	Assert::equal(DateTime::from('31.12.2020 23:59:59'), $dt->getLastDayOfYear());
 });
 
+// DateTime::getFirstDayOfWeek
+// DateTime::getLastDayOfWeek
+test(function (): void {
+	$dt = new DateTime('18.6.2020');
+	Assert::equal(DateTime::from('15.6.2020 00:00:00'), $dt->getFirstDayOfWeek());
+	Assert::equal(DateTime::from('21.6.2020 23:59:59'), $dt->getLastDayOfWeek());
+
+	$dt = new DateTime('31.7.2020');
+	Assert::equal(DateTime::from('27.7.2020 00:00:00'), $dt->getFirstDayOfWeek());
+	Assert::equal(DateTime::from('2.8.2020 23:59:59'), $dt->getLastDayOfWeek());
+});
+
 // DateTime::setToday
 test(function (): void {
 	$dt = DateTime::createBy(2020, 6, 1);
