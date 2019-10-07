@@ -139,7 +139,7 @@ class DateTime extends NetteDateTime
 	 */
 	public function getFirstDayOfWeek(): self
 	{
-		return $this->modifyClone('first day of this week')
+		return $this->modifyClone('this week')
 			->setZeroTime();
 	}
 
@@ -148,7 +148,7 @@ class DateTime extends NetteDateTime
 	 */
 	public function getLastDayOfWeek(): self
 	{
-		return $this->modifyClone('last day of this week')
+		return $this->modifyClone('this week +6 days')
 			->setMidnight();
 	}
 
