@@ -7,7 +7,7 @@ class Urls
 
 	public static function hasFragment(string $url): bool
 	{
-		return Strings::startsWith($url, '#');
+		return Strings::contains($url, '#');
 	}
 
 }
