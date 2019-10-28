@@ -3,7 +3,7 @@
 use Contributte\Utils\Urls;
 use Tester\Assert;
 
-require_once __DIR__ . '/../bootstrap.php';
+require_once __DIR__ . '/../../bootstrap.php';
 
 // Urls::spaceless
 test(function (): void {

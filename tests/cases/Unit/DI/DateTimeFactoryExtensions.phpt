@@ -11,7 +11,7 @@ use Nette\DI\Container;
 use Nette\DI\ContainerLoader;
 use Tester\Assert;
 
-require_once __DIR__ . '/../../bootstrap.php';
+require_once __DIR__ . '/../../../bootstrap.php';
 
 test(function (): void {
 	$loader = new ContainerLoader(TEMP_DIR, true);
