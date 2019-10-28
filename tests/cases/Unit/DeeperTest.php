@@ -2,7 +2,7 @@
 
 namespace Tests\Contributte\Utils\Unit;
 
-require_once __DIR__ . '/../bootstrap.php';
+require_once __DIR__ . '/../../bootstrap.php';
 
 use Contributte\Utils\Deeper;
 use Nette\InvalidArgumentException;

@@ -9,7 +9,7 @@ use Tester\Assert;
 use Tester\TestCase;
 use Throwable;
 
-require_once __DIR__ . '/../../bootstrap.php';
+require_once __DIR__ . '/../../../bootstrap.php';
 
 class OptionalTest extends TestCase
 {

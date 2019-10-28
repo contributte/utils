@@ -4,7 +4,7 @@
  * Test: Strings
  */
 
-require_once __DIR__ . '/../bootstrap.php';
+require_once __DIR__ . '/../../bootstrap.php';
 
 use Contributte\Utils\Strings;
 use Tester\Assert;

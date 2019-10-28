@@ -23,6 +23,7 @@ Extra contribution to [`nette/utils`](https://github.com/nette/utils).
 - [Strings](.docs/README.md#strings)
 - [Urls](.docs/README.md#urls)
 - [Validators](.docs/README.md#validators)
+- [CSV](.docs/README.md#csv)
 
 ## Versions
 

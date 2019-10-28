@@ -8,16 +8,16 @@
 	</rule>
 
 	<!-- Package specific rules -->
-    <rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
-        <properties>
-            <property name="rootNamespaces" type="array" value="
-                src=>Contributte\Utils,
-                tests=>Tests\Contributte\Utils,
-            "/>
+	<rule ref="SlevomatCodingStandard.Files.TypeNameMatchesFileName">
+		<properties>
+			<property name="rootNamespaces" type="array" value="
+				src=>Contributte\Utils,
+				tests/cases=>Tests\Contributte\Utils,
+			"/>
 			<property name="extensions" type="array" value="php, phpt"/>
-        </properties>
-    </rule>
+		</properties>
+	</rule>
 
-    <!-- Exclude folders -->
-    <exclude-pattern>/tests/tmp</exclude-pattern>
+	<!-- Exclude folders -->
+	<exclude-pattern>/tests/tmp</exclude-pattern>
 </ruleset>
