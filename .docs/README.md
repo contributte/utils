@@ -14,6 +14,10 @@ There are many classes in this package. Almost all are extending from `nette/uti
 - [Urls](#urls)
 - [Validators](#validators)
 - [CSV](#csv)
+- [Collections](#collections)
+    - [LazyCollection](#lazycollection)
+- [Values](#values)
+    - [Email](#email)
 
 ## Setup
 
@@ -23,7 +27,7 @@ composer require contributte/utils
 
 ## `DateTime` && `DateTimeFactory`
 
-This extension register simple `DateTime` provider -> `DateTimeFactory`. 
+This extension register simple `DateTime` provider -> `DateTimeFactory`.
 
 ```yml
 extensions:
@@ -61,7 +65,7 @@ Collections of functions for normalizing input:
 
 ## `FileSystem`
 
-Collection of extra functions: 
+Collection of extra functions:
 
 - `FileSystem::pathalize($path)`
 - `FileSystem::extension($file)`
@@ -70,7 +74,7 @@ Collection of extra functions:
 
 ## `Strings`
 
-Collection of extra functions: 
+Collection of extra functions:
 
 - `Strings::replacePrefix($s, $search, $replacement = '')`
 - `Strings::replaceSuffix($s, $search, $replacement = '')`
@@ -81,20 +85,20 @@ Collection of extra functions:
 
 ## `Urls`
 
-Collection of extra functions: 
+Collection of extra functions:
 
 - `Urls::hasFragment($url)`
 
 ## `Validators`
 
-Collection of extra functions: 
+Collection of extra functions:
 
 - `Validators::isIco($s)` - trader identification number (Czech only)
 - `Validators::isRc($s)`- personal identification number (Czech and Slovak only)
 
 ## `Http`
 
-Collection of extra functions: 
+Collection of extra functions:
 
 - `Http::metadata($s)` - gets http metadata from string, returns as `[name => content]`
 
@@ -149,4 +153,32 @@ Result will be like this:
         'x' => 'bar',
     ],
 ],
+```
+
+## Collections
+
+### LazyCollection
+
+Initializes data only when required.
+
+```php
+use Contributte\Utils\Collections\LazyCollection;
+
+$items = LazyCollection::fromCallback(callback $datasource);
+
+foreach($items as $item) { // Datasource callback is called on first access
+
+}
+```
+
+## Values
+
+### Email
+
+```php
+use Contributte\Utils\Values\Email;
+
+$email = new Email('foo@example.com'); // Validate email format
+$value = $email->get(); // Get value
+$equal = $email->equal(new Email('foo@example.com')); // Compare values of objects
 ```
