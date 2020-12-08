@@ -1,7 +1,5 @@
 # Contributte Utils
 
-Extra contribution to [`nette/utils`](https://github.com/nette/utils).
-
 ## Content
 
 There are many classes in this package. Almost all are extending from `nette/utils` and adding more functionality.
