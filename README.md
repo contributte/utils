@@ -22,8 +22,8 @@ Website ðŸš€ <a href="https://contributte.org">contributte.org</a> | Contact ðŸ‘
 
 To install latest version of `contributte/utils` use [Composer](https://getcomposer.org).
 
-```
-$ composer require contributte/utils
+```bash
+composer require contributte/utils
 ```
 
 ## Documentation

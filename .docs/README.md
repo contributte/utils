@@ -27,7 +27,7 @@ composer require contributte/utils
 
 This extension register simple `DateTime` provider -> `DateTimeFactory`.
 
-```yml
+```yaml
 extensions:
     datetime: Contributte\Utils\DI\DateTimeFactoryExtension
 ```
