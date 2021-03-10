@@ -13,9 +13,9 @@ There are many classes in this package. Almost all are extending from `nette/uti
 - [Validators](#validators)
 - [CSV](#csv)
 - [Collections](#collections)
-    - [LazyCollection](#lazycollection)
+	- [LazyCollection](#lazycollection)
 - [Values](#values)
-    - [Email](#email)
+	- [Email](#email)
 
 ## Setup
 
@@ -27,16 +27,16 @@ composer require contributte/utils
 
 This extension register simple `DateTime` provider -> `DateTimeFactory`.
 
-```yaml
+```neon
 extensions:
-    datetime: Contributte\Utils\DI\DateTimeFactoryExtension
+	datetime: Contributte\Utils\DI\DateTimeFactoryExtension
 ```
 
 You can use the default or override it by our own implementation:
 
-```yaml
+```neon
 services:
-    datetime.factory: App\Model\MyDateTimeFactory
+	datetime.factory: App\Model\MyDateTimeFactory
 ```
 
 Another useful methods added to `DateTime`:
@@ -115,11 +115,11 @@ Setup scheme according to the columns:
 
 ```php
 $scheme = [
-    0 => 'user.name',
-    1 => 'user.surname',
-    2 => 'city',
-    3 => 'extra.id',
-    4 => 'extra.x',
+	0 => 'user.name',
+	1 => 'user.surname',
+	2 => 'city',
+	3 => 'extra.id',
+	4 => 'extra.x',
 ];
 
 $result = Csv::structural($scheme, __DIR__ . '/some.csv');
@@ -130,26 +130,26 @@ Result will be like this:
 
 ```
 0 => [
-    'user' => [
-        'name' => 'Milan',
-        'surname' => 'Sulc',
-    ],
-    'city' => 'HK',
-    'extra' => [
-        'id' => '123456',
-        'x' => 'foo',
-    ],
+	'user' => [
+		'name' => 'Milan',
+		'surname' => 'Sulc',
+	],
+	'city' => 'HK',
+	'extra' => [
+		'id' => '123456',
+		'x' => 'foo',
+	],
 ],
 1 => [
-    'user' => [
-        'name' => 'John',
-        'surname' => 'Doe',
-    ],
-    'city' => 'Doens',
-    'extra' => [
-        'id' => '111111',
-        'x' => 'bar',
-    ],
+	'user' => [
+		'name' => 'John',
+		'surname' => 'Doe',
+	],
+	'city' => 'Doens',
+	'extra' => [
+		'id' => '111111',
+		'x' => 'bar',
+	],
 ],
 ```
 
