@@ -68,10 +68,10 @@ class Validators extends NetteValidators
 	public static function isIco(string $inn): bool
 	{
 		// "be liberal in what you receive"
-		$res = preg_replace('#\s+#', '', $inn);
+		$res = (string) preg_replace('#\s+#', '', $inn);
 
 		// has correct form?
-		if (preg_match('#^\d{8}$#', (string) $res) !== 1) {
+		if (preg_match('#^\d{8}$#', $res) !== 1) {
 			return false;
 		}
 

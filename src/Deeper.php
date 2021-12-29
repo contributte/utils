@@ -8,8 +8,9 @@ class Deeper
 {
 
 	/**
-	 * @param mixed $key
-	 * @param mixed[] $arr
+	 * @template T
+	 * @param array-key $key
+	 * @param array<T> $arr
 	 */
 	public static function has($key, array $arr, string $sep = '.'): bool
 	{
@@ -22,11 +23,11 @@ class Deeper
 	}
 
 	/**
-	 * @param mixed $key
-	 * @param mixed[] $arr
-	 * @param mixed $default
-	 * @return mixed
-	 * @throws InvalidArgumentException Thrown if value is missing and $default is not specified
+	 * @template T
+	 * @param array-key $key
+	 * @param array<T> $arr
+	 * @param ?T $default
+	 * @return ?T
 	 */
 	public static function get($key, array $arr, string $sep = '.', $default = null)
 	{
@@ -38,8 +39,8 @@ class Deeper
 	}
 
 	/**
-	 * @param mixed $key
-	 * @return mixed[]
+	 * @param string|int|bool|null $key
+	 * @return string[]
 	 */
 	public static function flat($key, string $sep = '.'): array
 	{
@@ -47,7 +48,13 @@ class Deeper
 			return [];
 		}
 
-		return (array) explode($sep, $key);
+		$res = explode($sep, (string) $key);
+
+		if ($res === false) {
+			return [];
+		}
+
+		return $res;
 	}
 
 }
