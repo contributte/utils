@@ -160,7 +160,7 @@ Result will be like this:
 Initializes data only when required.
 
 ```php
-use Contributte\Utils\Collections\LazyCollection;
+use Contributte\Utils\LazyCollection;
 
 $items = LazyCollection::fromCallback(callback $datasource);
 
