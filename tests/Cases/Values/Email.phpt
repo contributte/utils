@@ -7,7 +7,7 @@
 use Contributte\Utils\Values\Email;
 use Tester\Assert;
 
-require_once __DIR__ . '/../../../bootstrap.php';
+require_once __DIR__ . '/../../bootstrap.php';
 
 test(function (): void {
 	$email = new Email('foo@bar.baz');

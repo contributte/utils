@@ -4,7 +4,7 @@
  * Test: Csv
  */
 
-require_once __DIR__ . '/../../bootstrap.php';
+require_once __DIR__ . '/../bootstrap.php';
 
 use Contributte\Utils\Csv;
 use Nette\InvalidStateException;
@@ -33,7 +33,7 @@ test(function (): void {
 		2 => 'city',
 		3 => 'id',
 		4 => 'x',
-	], __DIR__ . '/../../fixtures/sample.csv'));
+	], __DIR__ . '/../Fixtures/sample.csv'));
 });
 
 // Complex array matching
@@ -67,7 +67,7 @@ test(function (): void {
 		2 => 'city',
 		3 => 'extra.id',
 		4 => 'extra.x',
-	], __DIR__ . '/../../fixtures/sample.csv'));
+	], __DIR__ . '/../Fixtures/sample.csv'));
 });
 
 // Part of simple array matching
@@ -81,7 +81,7 @@ test(function (): void {
 		],
 	], Csv::structural([
 		4 => 'x',
-	], __DIR__ . '/../../fixtures/sample.csv'));
+	], __DIR__ . '/../Fixtures/sample.csv'));
 });
 
 // Part of complex array matching
@@ -103,7 +103,7 @@ test(function (): void {
 		],
 	], Csv::structural([
 		4 => 'x.y.z',
-	], __DIR__ . '/../../fixtures/sample.csv'));
+	], __DIR__ . '/../Fixtures/sample.csv'));
 });
 
 // Overriding
@@ -118,7 +118,7 @@ test(function (): void {
 	], Csv::structural([
 		2 => 'x',
 		4 => 'x',
-	], __DIR__ . '/../../fixtures/sample.csv'));
+	], __DIR__ . '/../Fixtures/sample.csv'));
 });
 
 // Invalid arguments
@@ -132,6 +132,6 @@ test(function (): void {
 			4 => 'e',
 			5 => 'f',
 			6 => 'g',
-		], __DIR__ . '/../../fixtures/sample.csv');
+		], __DIR__ . '/../Fixtures/sample.csv');
 	}, InvalidStateException::class);
 });

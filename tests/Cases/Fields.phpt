@@ -4,7 +4,7 @@
  * Test: Fields
  */
 
-require_once __DIR__ . '/../../bootstrap.php';
+require_once __DIR__ . '/../bootstrap.php';
 
 use Contributte\Utils\Fields;
 use Tester\Assert;

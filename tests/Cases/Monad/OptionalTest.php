@@ -1,6 +1,6 @@
 <?php declare(strict_types = 1);
 
-namespace Tests\Contributte\Utils\Unit\Monad;
+namespace Tests\Cases\Monad;
 
 use Contributte\Utils\Monad\Optional;
 use Exception;
@@ -9,7 +9,7 @@ use Tester\Assert;
 use Tester\TestCase;
 use Throwable;
 
-require_once __DIR__ . '/../../../bootstrap.php';
+require_once __DIR__ . '/../../bootstrap.php';
 
 class OptionalTest extends TestCase
 {

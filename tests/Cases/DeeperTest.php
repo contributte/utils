@@ -1,8 +1,8 @@
 <?php declare(strict_types = 1);
 
-namespace Tests\Contributte\Utils\Unit;
+namespace Tests\Cases;
 
-require_once __DIR__ . '/../../bootstrap.php';
+require_once __DIR__ . '/../bootstrap.php';
 
 use Contributte\Utils\Deeper;
 use Nette\InvalidArgumentException;

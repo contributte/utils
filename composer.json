@@ -43,7 +43,7 @@
   },
   "autoload-dev": {
     "psr-4": {
-      "Tests\\Contributte\\Utils\\": "tests/cases/Unit"
+      "Tests\\": "tests"
     }
   },
   "minimum-stability": "dev",
