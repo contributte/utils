@@ -8,5 +8,15 @@ parameters:
 	level: 9
 	phpVersion: 70200
 
+	scanDirectories:
+		- src
+
+	fileExtensions:
+		- php
+
+	paths:
+		- src
+
 	ignoreErrors:
 		- '#Unsafe usage of new static\(\).#'
+		- '#Strict comparison using === between non-empty-array<int, string> and false will always evaluate to false#'

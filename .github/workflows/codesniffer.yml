@@ -10,6 +10,6 @@ on:
     - cron: "0 8 * * 1"
 
 jobs:
-  build:
+  codesniffer:
     name: "Codesniffer"
-    uses: contributte/.github/.github/workflows/codesniffer.yml@master
+    uses: contributte/.github/.github/workflows/codesniffer.yml@v1

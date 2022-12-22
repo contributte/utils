@@ -11,6 +11,7 @@ class Deeper
 	 * @template T
 	 * @param array-key $key
 	 * @param array<T> $arr
+	 * @param non-empty-string $sep
 	 */
 	public static function has($key, array $arr, string $sep = '.'): bool
 	{
@@ -26,6 +27,7 @@ class Deeper
 	 * @template T
 	 * @param array-key $key
 	 * @param array<T> $arr
+	 * @param non-empty-string $sep
 	 * @param ?T $default
 	 * @return ?T
 	 */
@@ -40,6 +42,7 @@ class Deeper
 
 	/**
 	 * @param string|int|bool|null $key
+	 * @param non-empty-string $sep
 	 * @return string[]
 	 */
 	public static function flat($key, string $sep = '.'): array
