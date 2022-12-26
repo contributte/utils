@@ -11,7 +11,7 @@ class AnnotationFoo
 
 	/**
 	 * @creator Felix
-	 * @test(false)
+	 * @test(false, true)
 	 */
 	public function fake(): bool
 	{

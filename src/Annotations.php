@@ -36,14 +36,37 @@ class Annotations
 	/** @var string[] */
 	public static $inherited = ['description', 'param', 'return'];
 
-	/** @var array<string, array<string, mixed[]>> */
+	/** @var array<string, array<string, array<string, array<mixed>>>> */
 	private static $cache;
 
 	/**
 	 * @param ReflectionClass<object>|ReflectionMethod|ReflectionProperty|ReflectionFunction $r
-	 * @return array<mixed>
 	 */
-	public static function getAll(Reflector $r): array
+	public static function hasAnnotation(Reflector $r, string $name): bool
+	{
+		return self::getAnnotation($r, $name) !== null;
+	}
+
+	/**
+	 * @param ReflectionClass<object>|ReflectionMethod|ReflectionProperty|ReflectionFunction $r
+	 * @return mixed
+	 */
+	public static function getAnnotation(Reflector $r, string $name)
+	{
+		$res = self::getAnnotations($r);
+
+		if ($res === []) {
+			return null;
+		}
+
+		return isset($res[$name]) ? end($res[$name]) : null;
+	}
+
+	/**
+	 * @param ReflectionClass<object>|ReflectionMethod|ReflectionProperty|ReflectionFunction $r
+	 * @return array<array<mixed>>
+	 */
+	public static function getAnnotations(Reflector $r): array
 	{
 		if ($r instanceof ReflectionClass) {
 			$type = $r->getName();
@@ -80,10 +103,10 @@ class Annotations
 		if ($r instanceof ReflectionMethod && !$r->isPrivate() && (!$r->isConstructor() || !empty($annotations['inheritdoc'][0]))
 		) {
 			try {
-				$inherited = self::getAll(new ReflectionMethod((string) get_parent_class($type), $member));
+				$inherited = self::getAnnotations(new ReflectionMethod((string) get_parent_class($type), $member));
 			} catch (ReflectionException $e) {
 				try {
-					$inherited = self::getAll($r->getPrototype());
+					$inherited = self::getAnnotations($r->getPrototype());
 				} catch (ReflectionException $e) {
 					$inherited = [];
 				}
@@ -96,7 +119,7 @@ class Annotations
 	}
 
 	/**
-	 * @return array<mixed>
+	 * @return array<array<string|int,mixed[]>>
 	 */
 	private static function parseComment(string $comment): array
 	{
