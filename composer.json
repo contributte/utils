@@ -22,13 +22,11 @@
     "nette/utils": "^3.2.9 || ^4.0.0"
   },
   "require-dev": {
-    "nette/di": "^3.1.0",
-    "ninjify/nunjuck": "^0.4.0",
-    "ninjify/qa": "^0.12.0",
-    "phpstan/phpstan": "^1.9.0",
-    "phpstan/phpstan-deprecation-rules": "^1.1.0",
-    "phpstan/phpstan-nette": "^1.2.0",
-    "phpstan/phpstan-strict-rules": "^1.4.0"
+    "nette/di": "^3.1.8",
+    "contributte/qa": "^0.4",
+    "contributte/tester": "^0.3",
+    "contributte/phpstan": "^0.1",
+    "mockery/mockery": "^1.5.0"
   },
   "suggest": {
     "nette/di": "to use DateTimeExtension[CompilerExtension]"
