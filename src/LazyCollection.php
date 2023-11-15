@@ -7,6 +7,7 @@ use IteratorAggregate;
 
 /**
  * @implements IteratorAggregate<int, mixed>
+ * @phpstan-consistent-constructor
  */
 class LazyCollection implements IteratorAggregate
 {
@@ -15,7 +16,7 @@ class LazyCollection implements IteratorAggregate
 	private $callback;
 
 	/** @var mixed[] */
-	private $data = null;
+	private ?array $data = null;
 
 	private function __construct(callable $callback)
 	{

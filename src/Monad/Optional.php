@@ -5,31 +5,27 @@ namespace Contributte\Utils\Monad;
 use Nette\InvalidStateException;
 use Throwable;
 
+/**
+ * @phpstan-consistent-constructor
+ */
 class Optional
 {
 
-	/** @var mixed */
-	private $value;
+	private mixed $value;
 
-	/** @var mixed */
-	private $elseValue;
+	private mixed $elseValue = null;
 
-	/** @var Throwable */
-	private $elseThrow;
+	private ?Throwable $elseThrow = null;
 
-	/**
-	 * @param mixed $value
-	 */
-	protected function __construct($value)
+	protected function __construct(mixed $value)
 	{
 		$this->value = $value;
 	}
 
 	/**
-	 * @param mixed $value
 	 * @return static
 	 */
-	public static function of($value): self
+	public static function of(mixed $value): self
 	{
 		return new static($value);
 	}
@@ -48,10 +44,9 @@ class Optional
 	}
 
 	/**
-	 * @param mixed $value
 	 * @return static
 	 */
-	public function orElse($value): self
+	public function orElse(mixed $value): self
 	{
 		$this->elseValue = $value;
 
@@ -68,10 +63,7 @@ class Optional
 		return $this;
 	}
 
-	/**
-	 * @return mixed
-	 */
-	public function get()
+	public function get(): mixed
 	{
 		if ($this->value !== null) {
 			return $this->value;

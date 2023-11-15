@@ -6,6 +6,9 @@ use DateTimeInterface;
 use DateTimeZone;
 use Nette\Utils\DateTime as NetteDateTime;
 
+/**
+ * @phpstan-consistent-constructor
+ */
 class DateTime extends NetteDateTime
 {
 
@@ -14,77 +17,12 @@ class DateTime extends NetteDateTime
 		parent::__construct($time, $timezone);
 	}
 
-	/**
-	 * @param string|int|DateTimeInterface $time
-	 * @return static
-	 */
-	public static function from($time): self
+	public static function from(string|int|DateTimeInterface|null $time): static
 	{
 		return parent::from($time);
 	}
 
-	/**
-	 * @return static
-	 */
-	public function modifyClone(string $modify = ''): self
-	{
-		return parent::modifyClone($modify);
-	}
-
-	/**
-	 * Set time to current time
-	 *
-	 * @return static
-	 */
-	public function setCurrentTime(): self
-	{
-		return $this->modifyClone()->setTime((int) date('H'), (int) date('i'), (int) date('s'));
-	}
-
-	/**
-	 * Reset current time (00:00:00)
-	 *
-	 * @return static
-	 */
-	public function resetTime(): self
-	{
-		return $this->modifyClone()->setTime(0, 0, 0);
-	}
-
-	/**
-	 * Reset current time (00:00:00)
-	 *
-	 * @return static
-	 */
-	public function setZeroTime(): self
-	{
-		return $this->resetTime();
-	}
-
-	/**
-	 * Set time to midnight (23:59:59)
-	 *
-	 * @return static
-	 */
-	public function setMidnight(): self
-	{
-		return $this->modifyClone()->setTime(23, 59, 59);
-	}
-
-	/**
-	 * Set date to today
-	 *
-	 * @return static
-	 */
-	public function setToday(): self
-	{
-		return $this->modifyClone()->setDate((int) date('Y'), (int) date('m'), (int) date('d'));
-	}
-
-	/**
-	 * @return static
-	 */
-	public static function createBy(?int $year = null, ?int $month = null, ?int $day = null, ?int $hour = null, ?int $minute = null, ?int $second = null): self
+	public static function createBy(?int $year = null, ?int $month = null, ?int $day = null, ?int $hour = null, ?int $minute = null, ?int $second = null): static
 	{
 		return self::create([
 			'year' => $year,
@@ -98,9 +36,8 @@ class DateTime extends NetteDateTime
 
 	/**
 	 * @param string[]|int[]|null[] $args
-	 * @return static
 	 */
-	public static function create(array $args): self
+	public static function create(array $args): static
 	{
 		$date = new static();
 
@@ -134,55 +71,82 @@ class DateTime extends NetteDateTime
 		return $date;
 	}
 
+	public function modifyClone(string $modify = ''): static
+	{
+		return parent::modifyClone($modify);
+	}
+
 	/**
-	 * @return static
+	 * Set time to current time
 	 */
-	public function getFirstDayOfWeek(): self
+	public function setCurrentTime(): static
+	{
+		return $this->modifyClone()->setTime((int) date('H'), (int) date('i'), (int) date('s'));
+	}
+
+	/**
+	 * Reset current time (00:00:00)
+	 */
+	public function resetTime(): static
+	{
+		return $this->modifyClone()->setTime(0, 0, 0);
+	}
+
+	/**
+	 * Reset current time (00:00:00)
+	 */
+	public function setZeroTime(): static
+	{
+		return $this->resetTime();
+	}
+
+	/**
+	 * Set time to midnight (23:59:59)
+	 */
+	public function setMidnight(): static
+	{
+		return $this->modifyClone()->setTime(23, 59, 59);
+	}
+
+	/**
+	 * Set date to today
+	 */
+	public function setToday(): static
+	{
+		return $this->modifyClone()->setDate((int) date('Y'), (int) date('m'), (int) date('d'));
+	}
+
+	public function getFirstDayOfWeek(): static
 	{
 		return $this->modifyClone('this week')
 			->setZeroTime();
 	}
 
-	/**
-	 * @return static
-	 */
-	public function getLastDayOfWeek(): self
+	public function getLastDayOfWeek(): static
 	{
 		return $this->modifyClone('this week +6 days')
 			->setMidnight();
 	}
 
-	/**
-	 * @return static
-	 */
-	public function getFirstDayOfMonth(): self
+	public function getFirstDayOfMonth(): static
 	{
 		return $this->modifyClone('first day of this month')
 			->setZeroTime();
 	}
 
-	/**
-	 * @return static
-	 */
-	public function getLastDayOfMonth(): self
+	public function getLastDayOfMonth(): static
 	{
 		return $this->modifyClone('last day of this month')
 			->setMidnight();
 	}
 
-	/**
-	 * @return static
-	 */
-	public function getFirstDayOfYear(): self
+	public function getFirstDayOfYear(): static
 	{
 		return $this->modifyClone(sprintf('first day of January %s', $this->format('Y')))
 			->setZeroTime();
 	}
 
-	/**
-	 * @return static
-	 */
-	public function getLastDayOfYear(): self
+	public function getLastDayOfYear(): static
 	{
 		return $this->modifyClone(sprintf('last day of December %s', $this->format('Y')))
 			->setMidnight();

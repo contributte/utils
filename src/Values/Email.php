@@ -9,11 +9,9 @@ use Nette\Utils\Validators;
 class Email
 {
 
-	/** @var string */
-	private $domainPart;
+	private string $domainPart;
 
-	/** @var string */
-	private $localPart;
+	private string $localPart;
 
 	public function __construct(string $value)
 	{

@@ -17,6 +17,7 @@ class Deeper
 	{
 		try {
 			static::get($key, $arr, $sep);
+
 			return true;
 		} catch (InvalidArgumentException $e) {
 			return false;
@@ -41,23 +42,16 @@ class Deeper
 	}
 
 	/**
-	 * @param string|int|bool|null $key
 	 * @param non-empty-string $sep
 	 * @return string[]
 	 */
-	public static function flat($key, string $sep = '.'): array
+	public static function flat(string|int|bool|null $key, string $sep = '.'): array
 	{
 		if ($key === '' || $key === null || $key === false) {
 			return [];
 		}
 
-		$res = explode($sep, (string) $key);
-
-		if ($res === false) {
-			return [];
-		}
-
-		return $res;
+		return explode($sep, (string) $key);
 	}
 
 }

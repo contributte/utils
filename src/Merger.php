@@ -5,12 +5,7 @@ namespace Contributte\Utils;
 class Merger
 {
 
-	/**
-	 * @param mixed $left
-	 * @param mixed $right
-	 * @return mixed
-	 */
-	public static function merge($left, $right)
+	public static function merge(mixed $left, mixed $right): mixed
 	{
 		if (is_array($left) && is_array($right)) {
 			foreach ($left as $key => $val) {

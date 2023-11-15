@@ -10,8 +10,7 @@ class Http
 
 	use StaticClass;
 
-	/** @var string */
-	private static $metadataPattern = '
+	private static string $metadataPattern = '
 		~<\s*meta\s
 
 		# using lookahead to capture type to $1
@@ -39,7 +38,7 @@ class Http
 		if (preg_match_all(self::$metadataPattern, $content, $matches) !== false) {
 			$combine = array_combine($matches[1], $matches[2]);
 
-			if ($combine === false) {
+			if ($combine === []) {
 				throw new LogicException('Matches count is not equal.');
 			}
 

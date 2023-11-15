@@ -27,17 +27,15 @@ class Annotations
 	/** @internal identifier */
 	public const RE_IDENTIFIER = '[_a-zA-Z\x7F-\xFF][_a-zA-Z0-9\x7F-\xFF-\\\]*';
 
-	/** @var bool */
-	public static $useReflection;
+	public static ?bool $useReflection = null;
 
-	/** @var bool */
-	public static $autoRefresh = true;
+	public static bool $autoRefresh = true;
 
 	/** @var string[] */
-	public static $inherited = ['description', 'param', 'return'];
+	public static array $inherited = ['description', 'param', 'return'];
 
 	/** @var array<string, array<string, array<string, array<mixed>>>> */
-	private static $cache;
+	private static array $cache;
 
 	/**
 	 * @param ReflectionClass<object>|ReflectionMethod|ReflectionProperty|ReflectionFunction $r
@@ -49,9 +47,8 @@ class Annotations
 
 	/**
 	 * @param ReflectionClass<object>|ReflectionMethod|ReflectionProperty|ReflectionFunction $r
-	 * @return mixed
 	 */
-	public static function getAnnotation(Reflector $r, string $name)
+	public static function getAnnotation(Reflector $r, string $name): mixed
 	{
 		$res = self::getAnnotations($r);
 
@@ -93,14 +90,12 @@ class Annotations
 			return self::$cache[$type][$member];
 		}
 
-		if (self::$useReflection) {
-			$annotations = self::parseComment((string) $r->getDocComment());
-		} else {
-			$annotations = [];
-		}
+		$annotations = self::$useReflection ? self::parseComment((string) $r->getDocComment()) : [];
 
-		// @phpstan-ignore-next-line
-		if ($r instanceof ReflectionMethod && !$r->isPrivate() && (!$r->isConstructor() || !empty($annotations['inheritdoc'][0]))
+		if (
+			$r instanceof ReflectionMethod && !$r->isPrivate()
+			&& (!$r->isConstructor() || !empty($annotations['inheritdoc'][0])) // @phpstan-ignore-line
+			&& $type !== null
 		) {
 			try {
 				$inherited = self::getAnnotations(new ReflectionMethod((string) get_parent_class($type), $member));

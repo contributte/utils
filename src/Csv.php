@@ -75,11 +75,10 @@ class Csv
 	}
 
 	/**
-	 * @param mixed $value
 	 * @param mixed[][] $liner
 	 * @param string[] $keys
 	 */
-	protected static function matchValue($value, array &$liner, array $keys): void
+	protected static function matchValue(mixed $value, array &$liner, array $keys): void
 	{
 		if (count($keys) > 1) {
 			$tmp = array_shift($keys);

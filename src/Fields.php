@@ -5,10 +5,7 @@ namespace Contributte\Utils;
 class Fields
 {
 
-	/**
-	 * @return mixed
-	 */
-	public static function inn(string $s)
+	public static function inn(string $s): mixed
 	{
 		$s = Strings::spaceless($s);
 		$s = Strings::dashless($s);
@@ -17,10 +14,7 @@ class Fields
 		return $s;
 	}
 
-	/**
-	 * @return mixed
-	 */
-	public static function tin(string $s)
+	public static function tin(string $s): mixed
 	{
 		$s = Strings::spaceless($s);
 		$s = Strings::dashless($s);
@@ -29,10 +23,7 @@ class Fields
 		return $s;
 	}
 
-	/**
-	 * @return mixed
-	 */
-	public static function zip(string $s)
+	public static function zip(string $s): mixed
 	{
 		$s = Strings::spaceless($s);
 		$s = Strings::dashless($s);
@@ -40,10 +31,7 @@ class Fields
 		return $s;
 	}
 
-	/**
-	 * @return mixed
-	 */
-	public static function phone(string $s)
+	public static function phone(string $s): mixed
 	{
 		$s = Strings::spaceless($s);
 		$s = Strings::dashless($s);
