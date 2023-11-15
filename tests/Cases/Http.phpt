@@ -1,16 +1,13 @@
 <?php declare(strict_types = 1);
 
-/**
- * Test: Http
- */
-
-require_once __DIR__ . '/../bootstrap.php';
-
+use Contributte\Tester\Toolkit;
 use Contributte\Utils\Http;
 use Tester\Assert;
 
+require_once __DIR__ . '/../bootstrap.php';
+
 // Http::metadata
-test(function (): void {
+Toolkit::test(function (): void {
 	Assert::equal([
 		'bar' => 'foo',
 		'bar1' => 'foo',

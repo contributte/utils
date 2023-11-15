@@ -1,11 +1,12 @@
 <?php declare(strict_types = 1);
 
+use Contributte\Tester\Toolkit;
 use Contributte\Utils\Arrays;
 use Tester\Assert;
 
 require_once __DIR__ . '/../bootstrap.php';
 
-test(function (): void {
+Toolkit::test(function (): void {
 	$array1 = ['a', 'b', 'c', 'd'];
 	$hash1 = Arrays::hash($array1);
 

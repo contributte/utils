@@ -1,11 +1,12 @@
 <?php declare(strict_types = 1);
 
-require_once __DIR__ . '/../bootstrap.php';
-
+use Contributte\Tester\Toolkit;
 use Contributte\Utils\Config;
 use Tester\Assert;
 
-test(function (): void {
+require_once __DIR__ . '/../bootstrap.php';
+
+Toolkit::test(function (): void {
 	$data = [
 		'foo' => 'bar',
 		'conn' => [

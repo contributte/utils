@@ -1,16 +1,13 @@
 <?php declare(strict_types = 1);
 
-/**
- * Test: Strings
- */
-
-require_once __DIR__ . '/../bootstrap.php';
-
+use Contributte\Tester\Toolkit;
 use Contributte\Utils\Strings;
 use Tester\Assert;
 
+require_once __DIR__ . '/../bootstrap.php';
+
 // Strings::spaceless
-test(function (): void {
+Toolkit::test(function (): void {
 	Assert::equal('CZ11223344', Strings::spaceless('CZ11223344'));
 	Assert::equal('CZ11223344', Strings::spaceless(' CZ 11 22 33 44'));
 	Assert::equal('CZ11223344', Strings::spaceless('CZ 11 22 33 44 '));
@@ -20,7 +17,7 @@ test(function (): void {
 });
 
 // Strings::doublespaceless
-test(function (): void {
+Toolkit::test(function (): void {
 	Assert::equal('CZ11223344', Strings::doublespaceless('CZ11223344'));
 	Assert::equal('CZ11223344', Strings::doublespaceless(' CZ11223344 '));
 	Assert::equal('CZ11223344', Strings::doublespaceless(' CZ11223344 '));
@@ -30,7 +27,7 @@ test(function (): void {
 });
 
 // Strings::dashless
-test(function (): void {
+Toolkit::test(function (): void {
 	Assert::equal('CZ11223344', Strings::dashless('CZ-11-22-33-44'));
 	Assert::equal('CZ11223344', Strings::dashless('CZ-11223344'));
 	Assert::equal('CZ11223344', Strings::dashless('CZ-11---223344'));
@@ -39,7 +36,7 @@ test(function (): void {
 });
 
 // Strings::slashless
-test(function (): void {
+Toolkit::test(function (): void {
 	Assert::equal('foo/bar', Strings::slashless('foo//bar'));
 	Assert::equal('foo/bar', Strings::slashless(' foo//bar'));
 	Assert::equal('foo/bar', Strings::slashless('foo//bar '));
@@ -48,7 +45,7 @@ test(function (): void {
 
 // Strings::replacePrefix
 // Strings::replaceSuffix
-test(function (): void {
+Toolkit::test(function (): void {
 	Assert::equal('foobar', Strings::replacePrefix('foobar', 'ob', 'prefix_'));
 	Assert::equal('prefix_', Strings::replacePrefix('foobar', 'foobar', 'prefix_'));
 	Assert::equal('prefix_bar', Strings::replacePrefix('foobar', 'foo', 'prefix_'));

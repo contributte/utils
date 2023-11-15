@@ -2,12 +2,12 @@
 
 namespace Tests\Cases;
 
-require_once __DIR__ . '/../bootstrap.php';
-
 use Contributte\Utils\Deeper;
 use Nette\InvalidArgumentException;
 use Tester\Assert;
 use Tester\TestCase;
+
+require_once __DIR__ . '/../bootstrap.php';
 
 class DeeperTest extends TestCase
 {
@@ -34,10 +34,9 @@ class DeeperTest extends TestCase
 
 	/**
 	 * @dataProvider validFlatProvider
-	 * @param mixed   $key
 	 * @param mixed[] $array
 	 */
-	public function testFlat($key, array $array): void
+	public function testFlat(mixed $key, array $array): void
 	{
 		Assert::same($array, Deeper::flat($key));
 	}

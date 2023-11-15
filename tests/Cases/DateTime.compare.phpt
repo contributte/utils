@@ -1,16 +1,13 @@
 <?php declare(strict_types = 1);
 
-/**
- * Test: DateTime [comparing]
- */
-
-require_once __DIR__ . '/../bootstrap.php';
-
+use Contributte\Tester\Toolkit;
 use Contributte\Utils\DateTime;
 use Tester\Assert;
 
+require_once __DIR__ . '/../bootstrap.php';
+
 // Test: datetime
-test(function (): void {
+Toolkit::test(function (): void {
 	// Now
 	$now = new DateTime('2014-1-2 00:00:00');
 
@@ -23,7 +20,7 @@ test(function (): void {
 });
 
 // Test: datetime convert to strtotime
-test(function (): void {
+Toolkit::test(function (): void {
 	// Now
 	$now = strtotime((string) new DateTime('2014-1-2 00:00:00'));
 
@@ -36,7 +33,7 @@ test(function (): void {
 });
 
 // Test: now == until
-test(function (): void {
+Toolkit::test(function (): void {
 	// Now
 	$now = new DateTime('2014-1-5 00:00:00');
 
@@ -49,7 +46,7 @@ test(function (): void {
 });
 
 // Test: datetimes with DD.MM.YYYY 00:00:00
-test(function (): void {
+Toolkit::test(function (): void {
 	// Now
 	$now = new DateTime('now');
 	$now->setTime(0, 0, 0);

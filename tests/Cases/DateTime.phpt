@@ -1,16 +1,13 @@
 <?php declare(strict_types = 1);
 
-/**
- * Test: DateTime
- */
-
-require_once __DIR__ . '/../bootstrap.php';
-
+use Contributte\Tester\Toolkit;
 use Contributte\Utils\DateTime;
 use Tester\Assert;
 
+require_once __DIR__ . '/../bootstrap.php';
+
 // DateTime::setCurrentTime()
-test(function (): void {
+Toolkit::test(function (): void {
 	$dt = DateTime::from('2020-10-10');
 	Assert::equal('10.10.2020 00:00:00', $dt->format('d.m.Y H:i:s'));
 
@@ -19,7 +16,7 @@ test(function (): void {
 });
 
 // DateTime::create
-test(function (): void {
+Toolkit::test(function (): void {
 	$dt = DateTime::create([]);
 	Assert::equal(DateTime::from(sprintf('%s.%s.%s', date('d'), date('m'), date('Y'))), $dt);
 
@@ -34,7 +31,7 @@ test(function (): void {
 });
 
 // DateTime::createBy
-test(function (): void {
+Toolkit::test(function (): void {
 	$dt = DateTime::createBy(2020, 6, 1);
 	Assert::equal(DateTime::from('2020-06-01'), $dt);
 });
@@ -44,7 +41,7 @@ test(function (): void {
 // DateTime::getFirstDayOfYear
 // DateTime::getLastDayOfYear
 // DateTime::getFirstDayOfMonth
-test(function (): void {
+Toolkit::test(function (): void {
 	$dt = new DateTime('15.6.2020');
 	Assert::equal(DateTime::from('1.6.2020 00:00:00'), $dt->getFirstDayOfMonth());
 	Assert::equal(DateTime::from('30.6.2020 23:59:59'), $dt->getLastDayOfMonth());
@@ -54,7 +51,7 @@ test(function (): void {
 
 // DateTime::getFirstDayOfWeek
 // DateTime::getLastDayOfWeek
-test(function (): void {
+Toolkit::test(function (): void {
 	$dt = new DateTime('18.6.2020');
 	Assert::equal(DateTime::from('15.6.2020 00:00:00'), $dt->getFirstDayOfWeek());
 	Assert::equal(DateTime::from('21.6.2020 23:59:59'), $dt->getLastDayOfWeek());
@@ -65,7 +62,7 @@ test(function (): void {
 });
 
 // DateTime::setToday
-test(function (): void {
+Toolkit::test(function (): void {
 	$dt = DateTime::createBy(2020, 6, 1);
 	$dt = $dt->setToday();
 	Assert::equal(date('d.m.Y'), $dt->format('d.m.Y'));

@@ -1,16 +1,13 @@
 <?php declare(strict_types = 1);
 
-/**
- * Test: Validators
- */
-
-require_once __DIR__ . '/../bootstrap.php';
-
+use Contributte\Tester\Toolkit;
 use Contributte\Utils\Validators;
 use Tester\Assert;
 
+require_once __DIR__ . '/../bootstrap.php';
+
 // Validators::isRc
-test(function (): void {
+Toolkit::test(function (): void {
 	Assert::equal(true, Validators::isRc('780123/3540'));
 	Assert::equal(true, Validators::isRc('9609030739'));
 	Assert::equal(true, Validators::isRc('875917/7383'));
@@ -26,7 +23,7 @@ test(function (): void {
 });
 
 // Validators::isIco
-test(function (): void {
+Toolkit::test(function (): void {
 	Assert::equal(false, Validators::isIco('CZ11223344'));
 	Assert::equal(false, Validators::isIco('4513543'));
 	Assert::equal(true, Validators::isIco('69663963'));

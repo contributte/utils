@@ -1,13 +1,14 @@
 <?php declare(strict_types = 1);
 
-require_once __DIR__ . '/../bootstrap.php';
-
+use Contributte\Tester\Toolkit;
 use Contributte\Utils\Annotations;
 use Tester\Assert;
 use Tests\Fixtures\AnnotationFoo;
 
+require_once __DIR__ . '/../bootstrap.php';
+
 // Class
-test(function (): void {
+Toolkit::test(function (): void {
 	$r = new ReflectionClass(AnnotationFoo::class);
 	$annotations = Annotations::getAnnotations($r);
 
@@ -24,7 +25,7 @@ test(function (): void {
 });
 
 // Method
-test(function (): void {
+Toolkit::test(function (): void {
 	$r = new ReflectionMethod(AnnotationFoo::class, 'fake');
 	$annotations = Annotations::getAnnotations($r);
 

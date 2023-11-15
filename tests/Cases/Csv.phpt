@@ -1,17 +1,14 @@
 <?php declare(strict_types = 1);
 
-/**
- * Test: Csv
- */
-
-require_once __DIR__ . '/../bootstrap.php';
-
+use Contributte\Tester\Toolkit;
 use Contributte\Utils\Csv;
 use Nette\InvalidStateException;
 use Tester\Assert;
 
+require_once __DIR__ . '/../bootstrap.php';
+
 // Simple array matching
-test(function (): void {
+Toolkit::test(function (): void {
 	Assert::equal([
 		0 => [
 			'name' => 'Milan',
@@ -37,7 +34,7 @@ test(function (): void {
 });
 
 // Complex array matching
-test(function (): void {
+Toolkit::test(function (): void {
 	Assert::equal([
 		0 => [
 			'user' => [
@@ -71,7 +68,7 @@ test(function (): void {
 });
 
 // Part of simple array matching
-test(function (): void {
+Toolkit::test(function (): void {
 	Assert::equal([
 		0 => [
 			'x' => 'foo',
@@ -85,7 +82,7 @@ test(function (): void {
 });
 
 // Part of complex array matching
-test(function (): void {
+Toolkit::test(function (): void {
 	Assert::equal([
 		0 => [
 			'x' => [
@@ -107,7 +104,7 @@ test(function (): void {
 });
 
 // Overriding
-test(function (): void {
+Toolkit::test(function (): void {
 	Assert::equal([
 		0 => [
 			'x' => 'foo',
@@ -122,7 +119,7 @@ test(function (): void {
 });
 
 // Invalid arguments
-test(function (): void {
+Toolkit::test(function (): void {
 	Assert::throws(function (): void {
 		Csv::structural([
 			0 => 'a',

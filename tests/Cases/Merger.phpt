@@ -1,11 +1,12 @@
 <?php declare(strict_types = 1);
 
+use Contributte\Tester\Toolkit;
 use Contributte\Utils\Merger;
 use Tester\Assert;
 
 require_once __DIR__ . '/../bootstrap.php';
 
-test(function (): void {
+Toolkit::test(function (): void {
 	$right = [
 		'default' => 'default',
 		'overriden' => 'not-overriden',
@@ -39,7 +40,7 @@ test(function (): void {
 	Assert::same($expected, $merged);
 });
 
-test(function (): void {
+Toolkit::test(function (): void {
 	$left = [
 		0 => 'zero left',
 		'one' => 'one left',
@@ -66,19 +67,19 @@ test(function (): void {
 	Assert::same($expected, Merger::merge($left, $right));
 });
 
-test(function (): void {
+Toolkit::test(function (): void {
 	$left = 10;
 	$right = 20;
 	Assert::same(10, Merger::merge($left, $right));
 });
 
-test(function (): void {
+Toolkit::test(function (): void {
 	$left = ['foo' => 'bar'];
 	$right = 10;
 	Assert::same(['foo' => 'bar'], Merger::merge($left, $right));
 });
 
-test(function (): void {
+Toolkit::test(function (): void {
 	$left = 10;
 	$right = ['foo' => 'bar'];
 	Assert::same(10, Merger::merge($left, $right));
