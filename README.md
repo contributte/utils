@@ -37,7 +37,6 @@ For details on how to use this package, check out our [documentation](.docs).
 | dev         | `^0.7`  | `master` | 4.0+  | `>=8.1` |
 | stable      | `^0.6`  | `master` | 3.1+  | `>=8.1` |
 
-
 ## Development
 
 See [how to contribute](https://contributte.org) to this package. This package is currently maintained by these authors.
