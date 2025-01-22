@@ -166,9 +166,8 @@ class Annotations
 						$val = array_key_exists($lval, $tokens) ? $tokens[$lval] : $val;
 					}
 
-					if ($key === '') {
+					if ($key === '') { // @phpstan-ignore-line
 						$items[] = $val;
-
 					} else {
 						$items[$key] = $val;
 					}

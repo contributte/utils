@@ -2,8 +2,6 @@
 
 namespace Contributte\Utils;
 
-use Nette\InvalidArgumentException;
-use Nette\IOException;
 use Nette\StaticClass;
 use Nette\Utils\FileSystem as NetteFileSystem;
 use RecursiveDirectoryIterator;
@@ -58,8 +56,6 @@ class FileSystem
 
 	/**
 	 * Creates a directory.
-	 *
-	 * @throws IOException
 	 */
 	public static function createDir(string $dir, int $mode = 0777): void
 	{
@@ -68,8 +64,6 @@ class FileSystem
 
 	/**
 	 * Copies a file or directory.
-	 *
-	 * @throws IOException
 	 */
 	public static function copy(string $source, string $dest, bool $overwrite = true): void
 	{
@@ -78,8 +72,6 @@ class FileSystem
 
 	/**
 	 * Deletes a file or directory.
-	 *
-	 * @throws IOException
 	 */
 	public static function delete(string $path): void
 	{
@@ -88,9 +80,6 @@ class FileSystem
 
 	/**
 	 * Renames a file or directory.
-	 *
-	 * @throws IOException
-	 * @throws InvalidArgumentException if the target file or directory already exist
 	 */
 	public static function rename(string $name, string $newName, bool $overwrite = true): void
 	{
@@ -99,8 +88,6 @@ class FileSystem
 
 	/**
 	 * Reads file content.
-	 *
-	 * @throws IOException
 	 */
 	public static function read(string $file): string
 	{
@@ -109,8 +96,6 @@ class FileSystem
 
 	/**
 	 * Writes a string to a file.
-	 *
-	 * @throws IOException
 	 */
 	public static function write(string $file, string $content, int $mode = 0666): void
 	{

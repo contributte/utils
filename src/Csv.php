@@ -41,7 +41,7 @@ class Csv
 		// Read and parse CSV file
 		$content = (array) file($file);
 		foreach ($content as $n1 => $line1) {
-			$data[$n1] = str_getcsv((string) $line1, $delimiter, $enclosure);
+			$data[$n1] = str_getcsv((string) $line1, $delimiter, $enclosure, '\\');
 		}
 
 		// No data at all
@@ -89,7 +89,7 @@ class Csv
 			$liner[$tmp][current($keys)] = [];
 			self::matchValue($value, $liner[$tmp], $keys);
 		} else {
-			$liner[current($keys)] = $value;
+			$liner[current($keys)] = $value; // @phpstan-ignore-line
 		}
 	}
 
