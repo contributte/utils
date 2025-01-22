@@ -19,7 +19,7 @@ csf:
 
 .PHONY: phpstan
 phpstan:
-	vendor/bin/phpstan analyse -c phpstan.neon
+	vendor/bin/phpstan analyse -c phpstan.neon --memory-limit=256M
 
 .PHONY: tests
 tests:
