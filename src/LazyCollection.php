@@ -18,7 +18,7 @@ class LazyCollection implements IteratorAggregate
 	/** @var mixed[] */
 	private ?array $data = null;
 
-	private function __construct(callable $callback)
+	protected function __construct(callable $callback)
 	{
 		$this->callback = $callback;
 	}
