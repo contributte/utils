@@ -61,9 +61,6 @@ class FileResponse
 		return $this->forceDownload;
 	}
 
-	/**
-	 * Send file to output
-	 */
 	public function send(): void
 	{
 		$name = $this->name;
