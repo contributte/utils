@@ -9,11 +9,10 @@ class Deeper
 
 	/**
 	 * @template T
-	 * @param array-key $key
 	 * @param array<T> $arr
 	 * @param non-empty-string $sep
 	 */
-	public static function has($key, array $arr, string $sep = '.'): bool
+	public static function has(string|int $key, array $arr, string $sep = '.'): bool
 	{
 		try {
 			static::get($key, $arr, $sep);
@@ -26,13 +25,12 @@ class Deeper
 
 	/**
 	 * @template T
-	 * @param array-key $key
 	 * @param array<T> $arr
 	 * @param non-empty-string $sep
 	 * @param ?T $default
 	 * @return ?T
 	 */
-	public static function get($key, array $arr, string $sep = '.', $default = null)
+	public static function get(string|int $key, array $arr, string $sep = '.', mixed $default = null): mixed
 	{
 		if (func_num_args() < 4) {
 			return Arrays::get($arr, static::flat($key, $sep));
