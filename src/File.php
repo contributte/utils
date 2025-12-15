@@ -20,17 +20,12 @@ class File
 		$this->title = $title;
 	}
 
-	/**
-	 * Get the file name (basename)
-	 */
 	public function getName(): string
 	{
 		return basename($this->path);
 	}
 
 	/**
-	 * Get the file size in bytes
-	 *
 	 * @throws FileNotFoundException
 	 */
 	public function getSize(): int
@@ -42,41 +37,22 @@ class File
 		return $size !== false ? $size : 0;
 	}
 
-	/**
-	 * Get the file title
-	 */
 	public function getTitle(): string|null
 	{
 		return $this->title;
 	}
 
-	/**
-	 * Get the file path
-	 */
 	public function getPath(): string
 	{
 		return $this->path;
 	}
 
-	/**
-	 * Check if file exists
-	 */
 	public function exists(): bool
 	{
 		return file_exists($this->path) && is_file($this->path);
 	}
 
 	/**
-	 * @deprecated Use exists() instead
-	 */
-	public function exist(): bool
-	{
-		return $this->exists();
-	}
-
-	/**
-	 * Move the file to a new location
-	 *
 	 * @throws FileNotFoundException
 	 */
 	public function move(string $destination, bool $overwrite = true): static
@@ -91,8 +67,6 @@ class File
 	}
 
 	/**
-	 * Convert file to Nette Image
-	 *
 	 * @throws FileNotFoundException
 	 */
 	public function toImage(): Image
@@ -103,8 +77,6 @@ class File
 	}
 
 	/**
-	 * Convert file to FileResponse for download
-	 *
 	 * @throws FileNotFoundException
 	 */
 	public function toResponse(string|null $name = null, string|null $contentType = null, bool $forceDownload = true): FileResponse
@@ -120,8 +92,6 @@ class File
 	}
 
 	/**
-	 * Assert that the file exists
-	 *
 	 * @throws FileNotFoundException
 	 */
 	private function assertExists(): void
