@@ -1,31 +1,26 @@
-.PHONY: install
+.PHONY: install qa cs csf phpstan tests coverage
+
 install:
 	composer update
 
-.PHONY: qa
 qa: phpstan cs
 
-.PHONY: cs
 cs:
 ifdef GITHUB_ACTION
-	vendor/bin/phpcs --standard=ruleset.xml --encoding=utf-8 --extensions="php,phpt" --colors -nsp -q --report=checkstyle src tests | cs2pr
+	vendor/bin/phpcs --standard=ruleset.xml --encoding=utf-8 --colors -nsp --extensions=php,phpt -q --report=checkstyle src tests | cs2pr
 else
-	vendor/bin/phpcs --standard=ruleset.xml --encoding=utf-8 --extensions="php,phpt" --colors -nsp src tests
+	vendor/bin/phpcs --standard=ruleset.xml --encoding=utf-8 --colors -nsp --extensions=php,phpt src tests
 endif
 
-.PHONY: csf
 csf:
-	vendor/bin/phpcbf --standard=ruleset.xml --encoding=utf-8 --extensions="php,phpt" --colors -nsp src tests
+	vendor/bin/phpcbf --standard=ruleset.xml --encoding=utf-8 --colors -nsp --extensions=php,phpt src tests
 
-.PHONY: phpstan
 phpstan:
-	vendor/bin/phpstan analyse -c phpstan.neon --memory-limit=256M
+	vendor/bin/phpstan analyse -c phpstan.neon
 
-.PHONY: tests
 tests:
 	vendor/bin/tester -s -p php --colors 1 -C tests/Cases
 
-.PHONY: coverage
 coverage:
 ifdef GITHUB_ACTION
 	vendor/bin/tester -s -p phpdbg --colors 1 -C --coverage coverage.xml --coverage-src src tests/Cases
