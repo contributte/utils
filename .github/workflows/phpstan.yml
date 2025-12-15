@@ -2,16 +2,13 @@ name: "Phpstan"
 
 on:
   pull_request:
-
+  workflow_dispatch:
   push:
     branches: ["*"]
-
   schedule:
     - cron: "0 8 * * 1"
 
 jobs:
   phpstan:
     name: "Phpstan"
-    uses: contributte/.github/.github/workflows/phpstan.yml@v1
-    with:
-      php: "8.2"
+    uses: contributte/.github/.github/workflows/phpstan.yml@master
