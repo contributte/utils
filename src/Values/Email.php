@@ -22,6 +22,10 @@ class Email
 		$parts = Strings::split($value, '~@~');
 		$domain = array_pop($parts);
 
+		if ($domain === null) {
+			throw new InvalidEmailAddressException($value);
+		}
+
 		// Try normalize the domain part
 		if (function_exists('idn_to_ascii')) {
 			$normalizedDomain = idn_to_ascii($domain, IDNA_NONTRANSITIONAL_TO_ASCII, INTL_IDNA_VARIANT_UTS46);

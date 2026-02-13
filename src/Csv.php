@@ -75,22 +75,28 @@ class Csv
 	}
 
 	/**
-	 * @param mixed[][] $liner
+	 * @param array<int|string, mixed> $liner
 	 * @param string[] $keys
 	 */
 	protected static function matchValue(mixed $value, array &$liner, array $keys): void
 	{
-		if (count($keys) > 1) {
-			$tmp = array_shift($keys);
-			if (!isset($liner[$tmp])) {
-				$liner[$tmp] = [];
+		$key = array_shift($keys);
+
+		if ($key === null) {
+			return;
+		}
+
+		if ($keys !== []) {
+			if (!isset($liner[$key]) || !is_array($liner[$key])) {
+				$liner[$key] = [];
 			}
 
-			$liner[$tmp][current($keys)] = [];
-			self::matchValue($value, $liner[$tmp], $keys);
-		} else {
-			$liner[current($keys)] = $value; // @phpstan-ignore-line
+			self::matchValue($value, $liner[$key], $keys);
+
+			return;
 		}
+
+		$liner[$key] = $value;
 	}
 
 }
