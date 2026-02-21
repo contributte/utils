@@ -9,7 +9,13 @@ There are many classes in this package. Almost all are extending from `nette/uti
 - [Fields](#fields)
 - [FileSystem](#filesystem)
 - [Strings](#strings)
+- [Caster](#caster)
+- [Emptiness](#emptiness)
 - [Urls](#urls)
+- [System](#system)
+- [TextString](#textstring)
+- [UserAgents](#useragents)
+- [Uuid](#uuid)
 - [Validators](#validators)
 - [CSV](#csv)
 - [Collections](#collections)
@@ -81,11 +87,63 @@ Collection of extra functions:
 - `Strings::dashless($s)`
 - `Strings::slashless($s)`
 
+## `Caster`
+
+Collection of casting helpers:
+
+- `Caster::stringOrNull($value)`
+- `Caster::ensureString($value)`
+- `Caster::forceString($value)`
+- `Caster::intOrNull($value)`
+- `Caster::ensureInt($value)`
+- `Caster::forceInt($value)`
+- `Caster::floatOrNull($value)`
+- `Caster::ensureFloat($value)`
+- `Caster::forceFloat($value)`
+- `Caster::boolOrNull($value)`
+- `Caster::ensureBool($value)`
+- `Caster::forceBool($value)`
+- `Caster::ensureArray($value)`
+- `Caster::forceArray($value)`
+
+## `Emptiness`
+
+Helpers for strict empty checks:
+
+- `Emptiness::empty($value)`
+- `Emptiness::notEmpty($value)`
+
 ## `Urls`
 
 Collection of extra functions:
 
 - `Urls::hasFragment($url)`
+
+## `System`
+
+Helpers for runtime diagnostics:
+
+- `System::memoryUsage()`
+- `System::memoryPeakUsage()`
+- `System::timer($name)`
+
+## `TextString`
+
+Value object implementing `Stringable` for explicit text wrapping.
+
+## `UserAgents`
+
+Utility for rotating and randomizing user agents:
+
+- `UserAgents::get()`
+- `UserAgents::random()`
+
+## `Uuid`
+
+UUID v4 generation and validation:
+
+- `Uuid::v4()`
+- `Uuid::validateV4($uuid)`
 
 ## `Validators`
 
