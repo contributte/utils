@@ -2,7 +2,7 @@
 
 <p align=center>
   <a href="https://github.com/contributte/utils/actions"><img src="https://badgen.net/github/checks/contributte/utils/master?cache=300"></a>
-  <a href="https://coveralls.io/r/contributte/utils"><img src="https://badgen.net/coveralls/c/github/contributte/utils?cache=300"></a>
+  <a href="https://codecov.io/gh/contributte/utils"><img src="https://badgen.net/codecov/c/github/contributte/utils?cache=300"></a>
   <a href="https://packagist.org/packages/contributte/utils"><img src="https://badgen.net/packagist/dm/contributte/utils"></a>
   <a href="https://packagist.org/packages/contributte/utils"><img src="https://badgen.net/packagist/v/contributte/utils"></a>
 </p>
