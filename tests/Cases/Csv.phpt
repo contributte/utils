@@ -7,6 +7,25 @@ use Tester\Assert;
 
 require_once __DIR__ . '/../bootstrap.php';
 
+Toolkit::test(function (): void {
+	Assert::same('', Csv::toCsv([]));
+
+	set_error_handler(static fn (int $severity, string $message): bool => $severity === E_DEPRECATED
+		&& str_contains($message, 'fputcsv(): the $escape parameter must be provided'));
+
+	try {
+		$csv = Csv::toCsv([
+			['name', 'city'],
+			['Milan', 'Hradec Kralove'],
+		]);
+	} finally {
+		restore_error_handler();
+	}
+
+	Assert::contains('name,city', $csv);
+	Assert::contains('Milan,"Hradec Kralove"', $csv);
+});
+
 // Simple array matching
 Toolkit::test(function (): void {
 	Assert::equal([
@@ -131,4 +150,39 @@ Toolkit::test(function (): void {
 			6 => 'g',
 		], __DIR__ . '/../Fixtures/sample.csv');
 	}, InvalidStateException::class);
+});
+
+Toolkit::test(function (): void {
+	$emptyFile = tempnam(sys_get_temp_dir(), 'csv-empty');
+
+	if ($emptyFile === false) {
+		Assert::fail('Unable to create temporary file');
+	}
+
+	try {
+		Assert::same([], Csv::structural([0 => 'name'], $emptyFile));
+	} finally {
+		@unlink($emptyFile);
+	}
+});
+
+Toolkit::test(function (): void {
+	$liner = ['existing' => 'value'];
+
+	$proxy = new class extends Csv {
+
+		/**
+		 * @param array<int|string, mixed> $liner
+		 * @param string[] $keys
+		 */
+		public static function invokeMatchValue(mixed $value, array &$liner, array $keys): void
+		{
+			self::matchValue($value, $liner, $keys);
+		}
+
+	};
+
+	$proxy::invokeMatchValue('new', $liner, []);
+
+	Assert::same(['existing' => 'value'], $liner);
 });

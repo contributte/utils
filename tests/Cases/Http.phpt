@@ -28,3 +28,22 @@ Toolkit::test(function (): void {
 		<meta  content=\' foo\' name = bar7.bar >
 	'));
 });
+
+Toolkit::test(function (): void {
+	Assert::exception(function (): void {
+		Http::metadata('plain text without html meta tags');
+	}, LogicException::class, 'Matches count is not equal.');
+});
+
+Toolkit::test(function (): void {
+	$backtrackLimit = ini_get('pcre.backtrack_limit');
+	ini_set('pcre.backtrack_limit', '1');
+
+	try {
+		Assert::same([], Http::metadata(str_repeat('<meta name="foo" content="bar">', 2000)));
+	} finally {
+		if ($backtrackLimit !== false) {
+			ini_set('pcre.backtrack_limit', $backtrackLimit);
+		}
+	}
+});
