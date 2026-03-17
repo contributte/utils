@@ -57,9 +57,12 @@ Toolkit::test(function (): void {
 
 Toolkit::test(function (): void {
 	Assert::same(null, Caster::boolOrNull(null));
+	Assert::same(true, Caster::boolOrNull(true));
+	Assert::same(false, Caster::boolOrNull(false));
 	Assert::same(true, Caster::boolOrNull('true'));
 	Assert::same(false, Caster::boolOrNull('false'));
 	Assert::same(null, Caster::boolOrNull('foo'));
+	Assert::same(null, Caster::boolOrNull(new stdClass()));
 	Assert::same(false, Caster::ensureBool(null));
 	Assert::same(true, Caster::ensureBool('yes'));
 	Assert::same(true, Caster::forceBool(true));

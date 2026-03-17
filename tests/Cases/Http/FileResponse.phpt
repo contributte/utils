@@ -68,4 +68,18 @@ Toolkit::test(function () use ($tempDir): void {
 	Assert::false($responseInline->isForceDownload());
 });
 
+// FileResponse::send
+Toolkit::test(function () use ($tempDir): void {
+	$filePath = $tempDir . '/send.txt';
+	FileSystem::write($filePath, 'send-content');
+
+	$response = new FileResponse($filePath, 'send.txt', 'text/plain', false);
+
+	ob_start();
+	$response->send();
+	$output = ob_get_clean();
+
+	Assert::same('send-content', $output);
+});
+
 FileSystem::delete($tempDir);

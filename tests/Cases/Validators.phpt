@@ -15,6 +15,8 @@ Toolkit::test(function (): void {
 	Assert::equal(true, Validators::isRc('9353218105'));
 	Assert::equal(true, Validators::isRc('1210050094'));
 	Assert::equal(true, Validators::isRc('0712050735'));
+	Assert::equal(true, Validators::isRc('0471010001'));
+	Assert::equal(true, Validators::isRc('0421010007'));
 
 	Assert::equal(false, Validators::isRc('9353218115'));
 	Assert::equal(false, Validators::isRc('9357218115'));
