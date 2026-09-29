@@ -18,17 +18,33 @@
 Website 🚀 <a href="https://contributte.org">contributte.org</a> | Contact 👨🏻‍💻 <a href="https://f3l1x.io">f3l1x.io</a> | Twitter 🐦 <a href="https://twitter.com/contributte">@contributte</a>
 </p>
 
+Contributte Utils is a set of small helpers for Nette Framework, built on top of `nette/utils`. It adds string,
+array, date and file helpers, casting and validation functions and value objects such as `Email`, so you don't
+write them again in every project.
+
 ## Usage
 
-To install latest version of `contributte/utils` use [Composer](https://getcomposer.org).
+To install the latest version of `contributte/utils`, use [Composer](https://getcomposer.org):
 
 ```bash
 composer require contributte/utils
 ```
 
-## Documentation
+Requires PHP 8.2 or later and `nette/utils` 4.0 or later.
 
-For details on how to use this package, check out our [documentation](.docs).
+Call the helpers statically, or wrap a value in a value object:
+
+```php
+use Contributte\Utils\Strings;
+use Contributte\Utils\Values\Email;
+
+Strings::spaceless(' CZ 11 22 33 44'); // 'CZ11223344'
+
+$email = new Email('foo@example.com'); // throws InvalidEmailAddressException for an invalid address
+$email->getDomainPart(); // 'example.com'
+```
+
+The [documentation](.docs) lists every helper, collection and value object.
 
 ## Versions
 
@@ -39,13 +55,25 @@ For details on how to use this package, check out our [documentation](.docs).
 
 ## Development
 
-See [how to contribute](https://contributte.org) to this package. This package is currently maintained by these authors.
+Install the dependencies and run the checks:
+
+```bash
+make install   # install dependencies
+make qa        # check code style and run static analysis
+make tests     # run tests
+```
+
+Run `make` to list every target.
+
+See [how to contribute](https://contributte.org/contributing.html) to this package.
+
+This package is maintained by these authors.
 
 <a href="https://github.com/f3l1x">
-    <img width="80" height="80" src="https://avatars2.githubusercontent.com/u/538058?v=3&s=80">
+  <img width="80" height="80" src="https://avatars2.githubusercontent.com/u/538058?v=3&s=80">
 </a>
 
 -----
 
-Consider to [support](https://contributte.org/partners) **contributte** development team.
-Also thank you for using this package.
+Consider [supporting](https://contributte.org/partners.html) the **contributte** development team.
+Thank you for using this package.
